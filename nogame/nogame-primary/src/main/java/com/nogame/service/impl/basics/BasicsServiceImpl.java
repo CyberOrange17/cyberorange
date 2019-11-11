@@ -1,5 +1,7 @@
 package com.nogame.service.impl.basics;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,14 +46,21 @@ public class BasicsServiceImpl<T> implements BasicsService<T> {
 	@Override
 	public T selectById(Long id) {
 		if (null == id) return null;
-		return basicsMapper.selectById();
+		return basicsMapper.selectById(id);
 	}
 
 	@Override
-	public T selectByEntity(T t) {
+	public T selectOneByEntity(T t) {
 		if (null == t) return null;
-		return basicsMapper.selectByEntity(t);
+		return basicsMapper.selectOneByEntity(t);
 	}
+
+	@Override
+	public List<T> selectListByEntity(T t) {
+		if (null == t) return null;
+		return basicsMapper.selectListByEntity(t);
+	}
+	
 
 	@Override
 	public void saveOrUpdate(T t, Long id) {

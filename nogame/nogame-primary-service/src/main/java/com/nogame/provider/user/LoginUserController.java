@@ -52,7 +52,7 @@ public class LoginUserController {
 	 */
 	@RequestMapping(value = "/check", method = RequestMethod.POST)
 	public LoginUserEntity check(LoginUserEntity user) {
-		return loginUserService.selectByEntity(user);
+		return loginUserService.selectOneByEntity(user);
 	}
 	
 }

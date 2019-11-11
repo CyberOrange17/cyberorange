@@ -1,13 +1,9 @@
-package com.nogame.service.basics;
+package com.nogame.mapper.basics;
 
 import java.util.List;
 
-/**
- * 基础操作接口
- * 
- * @author 黄传举
- */
-public interface BasicsService<T> {
+public interface BasicsMapper<T> {
+	
 	/**
 	 * 新增一条记录
 	 * 
@@ -55,15 +51,9 @@ public interface BasicsService<T> {
 	
 	/**
 	 * 根据实体查询多条记录
+	 * @param t
 	 * @return
 	 */
 	List<T> selectListByEntity(T t);
-
-	/**
-	 * 根据id保存或修改一条记录
-	 * 
-	 * @param t
-	 * @param id
-	 */
-	void saveOrUpdate(T t, Long id);
+	
 }
