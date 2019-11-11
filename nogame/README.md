@@ -1,1 +1,0 @@
-no game,just game
