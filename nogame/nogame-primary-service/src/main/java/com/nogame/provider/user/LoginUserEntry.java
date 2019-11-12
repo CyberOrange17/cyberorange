@@ -17,7 +17,7 @@ import com.nogame.service.LoginUserService;
  */
 @RestController
 @RequestMapping("/loginUser")
-public class LoginUserController {
+public class LoginUserEntry {
 
 	@Autowired
 	private LoginUserService loginUserService;
@@ -46,12 +46,12 @@ public class LoginUserController {
 	}
 	
 	/**
-	 * 注册验证：根据用户名或邮箱判断是否已注册
+	 * 注册验证：账号是否已注册
 	 * @param user
 	 * @return
 	 */
-	@RequestMapping(value = "/check", method = RequestMethod.POST)
-	public LoginUserEntity check(LoginUserEntity user) {
+	@RequestMapping(value = "/checkRegisterAccount", method = RequestMethod.POST)
+	public LoginUserEntity checkRegisterAccount(LoginUserEntity user) {
 		return loginUserService.selectOneByEntity(user);
 	}
 	

@@ -2,11 +2,10 @@
 $(function() {
 	//登录
 	$("#toLogin").unbind("click").bind("click", function() {
-		debugger
 		var account = $("#account").val();
 		var password = $("#password").val();
 		$.ajax({
-			url : "/user/login.html",
+			url : "/loginUser/login.html",
 			type : "POST",
 			data : {
 				"account" : account,
@@ -18,10 +17,9 @@ $(function() {
 	});
 	//注册验证用户名与邮箱
 	$("#register_ccount").unbind("blur").bind("blur", function() {
-		debugger
 		var account = $(this).val();
 		$.ajax({
-			url : "/check",
+			url : "/loginUser/checkRegisterAccount",
 			type : "POST",
 			data : {
 				"account" : account,

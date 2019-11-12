@@ -1,22 +1,29 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.nogame</groupId>
-    <artifactId>nogame</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <artifactId>nogame-mapper</artifactId>
-  <name>nogame-mapper</name>
-  <dependencies>
-  	<dependency>
-  		<groupId>com.nogame</groupId>
-  		<artifactId>nogame-entity</artifactId>
-  		<version>${nogame.version}</version>
-  	</dependency>
-  	<dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>${springboot.mybatis.starter.version}</version>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.nogame</groupId>
+		<artifactId>nogame</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>nogame-mapper</artifactId>
+	<name>nogame-mapper</name>
+	<dependencies>
+		<dependency>
+			<groupId>com.nogame</groupId>
+			<artifactId>nogame-entity</artifactId>
+			<version>${nogame.version}</version>
+		</dependency>
+		<!-- 第三方 -->
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>${springboot.mybatis.starter.version}</version>
+		</dependency>
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
-  </dependencies>
+	</dependencies>
 </project>

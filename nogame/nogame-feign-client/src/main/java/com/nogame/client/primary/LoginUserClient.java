@@ -27,6 +27,6 @@ public interface LoginUserClient {
 	 * @param user
 	 * @return
 	 */
-	@RequestMapping(value = "/loginUser/getUserByAccountAndPassword", method = RequestMethod.POST)
+	@RequestMapping(value = "/loginUser/checkRegisterAccount", method = RequestMethod.POST)
 	public LoginUserEntity getUserByAccountAndPassword(@RequestBody LoginUserEntity user);
 }

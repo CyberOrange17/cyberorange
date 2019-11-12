@@ -24,7 +24,7 @@ import com.nogame.utils.string.StrUtils;
  * @author 黄传举
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/loginUser")
 public class LoginController {
 
 	@Autowired
@@ -50,8 +50,13 @@ public class LoginController {
 		return RestResponse.createSuccessResponseWithMsg(user, login(user, LoginType.NORMAL));
 	}
 
-	@RequestMapping(value = "/check", method = RequestMethod.POST)
-	public RestResponse<LoginUserEntity> check(LoginUserEntity user) {
+	/**
+	 * 校验账号是否已注册
+	 * @param user
+	 * @return
+	 */
+	@RequestMapping(value = "/checkRegisterAccount", method = RequestMethod.POST)
+	public RestResponse<LoginUserEntity> checkRegisterAccount(LoginUserEntity user) {
 		LoginUserEntity existUser = loginUserClient.getUserByAccountAndPassword(user);
 		RestResponse<LoginUserEntity> response = RestResponse.createSuccessResponse();
 		if (StrUtils.isBlank(user.getAccount()) && existUser != null) {
