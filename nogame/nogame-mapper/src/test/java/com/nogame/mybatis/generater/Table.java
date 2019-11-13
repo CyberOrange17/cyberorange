@@ -27,8 +27,6 @@ public class Table {
 	private String javaMapperBasePackageName = "mapper.base";
 	private String javaServicePackageName = "service";
 	private String javaServiceImplPackageName = "service.impl";
-	private String javaFacadePackageName = "facade";
-	private String javaFacadeImplPackageName = "facade.impl";
 
 	private List<String> importTypeList = new ArrayList<>();
 
@@ -165,22 +163,6 @@ public class Table {
 		this.javaServiceImplPackageName = javaServiceImplPackageName;
 	}
 
-	public String getJavaFacadePackageName() {
-		return javaFacadePackageName;
-	}
-
-	public void setJavaFacadePackageName(String javaFacadePackageName) {
-		this.javaFacadePackageName = javaFacadePackageName;
-	}
-
-	public String getJavaFacadeImplPackageName() {
-		return javaFacadeImplPackageName;
-	}
-
-	public void setJavaFacadeImplPackageName(String javaFacadeImplPackageName) {
-		this.javaFacadeImplPackageName = javaFacadeImplPackageName;
-	}
-
 	public List<Column> getColumnList() {
 		return columnList;
 	}
@@ -310,7 +292,7 @@ public class Table {
 	}
 
 	public String getJavaMapperXmlDirectory(String rootDirectory) {
-		String mxd = rootDirectory + "src/main/resources/mapping/";
+		String mxd = rootDirectory + "src/main/resources/mappers/";
 		if (null != this.javaModuleName && !"".equals(this.javaModuleName)) {
 			mxd += this.javaModuleName;
 			mxd += Table.DIRECTORY_FILE_SEPARATOR;
@@ -330,10 +312,6 @@ public class Table {
 				this.javaServicePackageName);
 		this.javaServiceImplPackageName = getJavaPackageName(this.javaBasePackageName, this.javaModuleName,
 				this.javaServiceImplPackageName);
-		this.javaFacadePackageName = getJavaPackageName(this.javaBasePackageName, this.javaModuleName,
-				this.javaFacadePackageName);
-		this.javaFacadeImplPackageName = getJavaPackageName(this.javaBasePackageName, this.javaModuleName,
-				this.javaFacadeImplPackageName);
 	}
 
 	public void buildAll() {
@@ -355,9 +333,9 @@ public class Table {
 
 	public static void main(String[] args) {
 		Table t = new Table();
-		t.setMysqlTableName("CI_USER");
+		t.setMysqlTableName("primary_login_user");
 		t.setJavaBasePackageName("org.aabbc.generater");
 		t.buildAll();
-		System.out.println(t.getJavaCamelName());
+		System.out.println(t.getJavaMapperPackageName());
 	}
 }

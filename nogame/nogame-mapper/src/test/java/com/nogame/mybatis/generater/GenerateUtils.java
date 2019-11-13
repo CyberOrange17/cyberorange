@@ -22,12 +22,13 @@ import freemarker.template.TemplateException;
 @SuppressWarnings("deprecation")
 public class GenerateUtils {
 	private static final String driverClass = "com.mysql.jdbc.Driver";
-	private static final String connectionURL = "jdbc:mysql://localhost/nogame";
+	private static final String connectionURL = "jdbc:mysql://127.0.0.1:3306/nogame?useUnicode=true&characterEncoding=utf8&useSSL=false";
 	private static final String userName = "root";
-	private static final String passwd = "";
+	private static final String passwd = "root";
 	private static final String projectRootDirectory = "C:\\myfiles\\git\\nogame\\nogame\\nogame-primary\\";
+	private static final String projectMapperDirectory = "C:\\myfiles\\git\\nogame\\nogame\\nogame-mapper";
 	public static final String projectEntityDirectory = "C:\\myfiles\\git\\nogame\\nogame\\nogame-entity\\";
-	private static final String projectBasePackageName = "com.oristartech.cim";
+	private static final String projectBasePackageName = "com.nogame";
 	private static final String[] generateTable = new String[] {"primary_login_user"};
 	private static Configuration configuration = null;
 	static {
@@ -100,7 +101,7 @@ public class GenerateUtils {
 	}
 
 	public static void generateBaseMapperXml(Table table, boolean isCover) {
-		String fileName = table.getJavaMapperXmlDirectory(projectRootDirectory);
+		String fileName = table.getJavaMapperXmlDirectory(projectMapperDirectory);
 		fileName += "base/Base";
 		fileName += table.getJavaPascalName();
 		fileName += "Mapper.xml";
@@ -108,7 +109,7 @@ public class GenerateUtils {
 	}
 
 	public static void generateMapperXml(Table table, boolean isCover) {
-		String fileName = table.getJavaMapperXmlDirectory(projectRootDirectory);
+		String fileName = table.getJavaMapperXmlDirectory(projectMapperDirectory);
 		fileName += table.getJavaCamelName();
 		fileName += "Mapper.xml";
 		generateFile(table, fileName, "mapperXmlTemplate.ftl", isCover);
