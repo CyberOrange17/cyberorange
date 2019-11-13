@@ -25,11 +25,11 @@
 	<modules>
 		<module>nogame-common</module>
 		<module>nogame-entity</module>
-		<module>nogame-mapper</module>
 		<module>nogame-eureka-server</module>
 		<module>nogame-feign-client</module>
-		<module>nogame-primary</module>
+		<module>nogame-primary-mapper</module>
 		<module>nogame-primary-service</module>
+		<module>nogame-primary-slot</module>
 		<module>nogame-console</module>
 	</modules>
 	<!-- 第三方开源项目版本管理 -->
