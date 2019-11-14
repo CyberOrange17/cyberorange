@@ -1,14 +1,13 @@
 package com.nogame.provider.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nogame.primary.entity.LoginUserEntity;
-import com.nogame.service.LoginUserService;
+import com.nogame.primary.service.LoginUserService;
 
 /**
  * 基础服务-用户登录
@@ -17,7 +16,7 @@ import com.nogame.service.LoginUserService;
  */
 @RestController
 @RequestMapping("/loginUser")
-public class LoginUserEntry {
+public class LoginUserSlot {
 
 	@Autowired
 	private LoginUserService loginUserService;
@@ -30,29 +29,17 @@ public class LoginUserEntry {
 	 */
 	@RequestMapping(value = "/getUserByAccount")
 	public LoginUserEntity getUserByAccount(@RequestParam String account) {
-		return loginUserService.getUserByAccount(account);
+		return loginUserService.getLoginUserByAccount(account);
 	}
 
-	/**
-	 * 验证账号密码
-	 * 
-	 * @param account
-	 * @param password
-	 * @return
-	 */
-	@RequestMapping(value = "/getUserByAccountAndPassword", method = RequestMethod.POST)
-	public LoginUserEntity getUserByAccountAndPassword(@RequestBody LoginUserEntity loginUser) {
-		return loginUserService.getUserByAccountAndPassword(loginUser.getAccount(), loginUser.getPassword());
-	}
-	
 	/**
 	 * 注册验证：账号是否已注册
 	 * @param user
 	 * @return
 	 */
 	@RequestMapping(value = "/checkRegisterAccount", method = RequestMethod.POST)
-	public LoginUserEntity checkRegisterAccount(LoginUserEntity user) {
-		return loginUserService.selectOneByEntity(user);
+	public LoginUserEntity checkRegisterAccount(@RequestParam String account) {
+		return loginUserService.getLoginUserByAccount(account);
 	}
 	
 }

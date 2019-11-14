@@ -6,8 +6,8 @@ package com.nogame.myenum;
  */
 public enum LoginType {
 	
-	NORMAL(1, true, "账号"),
-	QQ(2, false, "QQ");
+	NORMAL(0, true, "账号"),
+	QQ(1, false, "QQ");
 	
 	private LoginType(int code, boolean requriedPassword, String name) {
 		this.code = code;

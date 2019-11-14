@@ -1,6 +1,6 @@
 package com.nogame.config.shiro.loginway;
 
-import com.nogame.config.shiro.UserToken;
+import com.nogame.config.shiro.LoginUserToken;
 import com.nogame.myenum.LoginType;
 import com.nogame.primary.entity.LoginUserEntity;
 
@@ -24,14 +24,14 @@ public interface LoginWay {
 	 * @param userToken
 	 * @return
 	 */
-	void initByToken(UserToken userToken);
+	void initByToken(LoginUserToken userToken);
 
 	/**
 	 * 获取用户信息
 	 * 
 	 * @return
 	 */
-	LoginUserEntity getUser();
+	LoginUserEntity getLoginUser();
 
 	/**
 	 * 是否免密

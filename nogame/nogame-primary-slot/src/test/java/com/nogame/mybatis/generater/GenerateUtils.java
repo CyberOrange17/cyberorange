@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import freemarker.template.Configuration;
 import freemarker.template.ObjectWrapper;
@@ -25,7 +26,7 @@ public class GenerateUtils {
 	private static final String connectionURL = "jdbc:mysql://127.0.0.1:3306/nogame?useUnicode=true&characterEncoding=utf8&useSSL=false";
 	private static final String userName = "root";
 	private static final String passwd = "root";
-	private static final String projectRootDirectory = "C:\\myfiles\\git\\nogame\\nogame\\nogame-primary-service\\";
+	private static final String projectServiceDirectory = "C:\\myfiles\\git\\nogame\\nogame\\nogame-primary-service\\";
 	private static final String projectMapperDirectory = "C:\\myfiles\\git\\nogame\\nogame\\nogame-primary-mapper\\";
 	public static final String projectEntityDirectory = "C:\\myfiles\\git\\nogame\\nogame\\nogame-entity\\";
 	private static final String projectBasePackageName = "com.nogame";
@@ -57,7 +58,7 @@ public class GenerateUtils {
 	}
 
 	public static void generateServiceImpl(Table table, boolean isCover) {
-		String fileName = table.getJavaModuleDirectory(projectRootDirectory);
+		String fileName = table.getJavaModuleDirectory(projectServiceDirectory);
 		fileName += "service/impl/";
 		fileName += table.getJavaPascalName();
 		fileName += "ServiceImpl.java";
@@ -65,7 +66,7 @@ public class GenerateUtils {
 	}
 
 	public static void generateService(Table table, boolean isCover) {
-		String fileName = table.getJavaModuleDirectory(projectRootDirectory);
+		String fileName = table.getJavaModuleDirectory(projectServiceDirectory);
 		fileName += "service/";
 		fileName += table.getJavaPascalName();
 		fileName += "Service.java";
@@ -74,9 +75,6 @@ public class GenerateUtils {
 
 	public static void generateEntity(Table table, boolean isCover) {
 		String directory = projectEntityDirectory;
-		if (directory == null || "".equals(directory)) {
-			directory = projectRootDirectory;
-		}
 		String fileName = table.getJavaModuleDirectory(directory);
 		fileName += "entity/";
 		fileName += table.getJavaPascalName();
@@ -85,7 +83,7 @@ public class GenerateUtils {
 	}
 
 	public static void generateBaseMapper(Table table, boolean isCover) {
-		String fileName = table.getJavaModuleDirectory(projectRootDirectory);
+		String fileName = table.getJavaModuleDirectory(projectMapperDirectory);
 		fileName += "mapper/base/Base";
 		fileName += table.getJavaPascalName();
 		fileName += "Mapper.java";
@@ -93,7 +91,7 @@ public class GenerateUtils {
 	}
 
 	public static void generateMapper(Table table, boolean isCover) {
-		String fileName = table.getJavaModuleDirectory(projectRootDirectory);
+		String fileName = table.getJavaModuleDirectory(projectMapperDirectory);
 		fileName += "mapper/";
 		fileName += table.getJavaPascalName();
 		fileName += "Mapper.java";
@@ -196,8 +194,13 @@ public class GenerateUtils {
 	public static Connection getConnection() {
 		Connection conn = null;
 		try {
-			Class.forName(driverClass); // classLoader,加载对应驱动
-			conn = (Connection) DriverManager.getConnection(connectionURL, userName, passwd);
+			Properties props =new Properties();
+			Class.forName(driverClass);
+			props.setProperty("user", userName);
+			props.setProperty("password", passwd);
+			props.setProperty("remarks", "true"); //设置可以获取remarks信息 
+			props.setProperty("useInformationSchema", "true");//设置可以获取tables remarks信息
+			conn = DriverManager.getConnection(connectionURL, props);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

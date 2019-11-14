@@ -1,16 +1,13 @@
-package com.nogame.mapper.basics;
+package com.nogame.service.basics;
 
 import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 基础操作接口
  * 
  * @author 黄传举
  */
-@Mapper
-public interface BasicsMapper<T> {
+public interface BasicsService<T> {
 
 	/**
 	 * 插入一个实体对象

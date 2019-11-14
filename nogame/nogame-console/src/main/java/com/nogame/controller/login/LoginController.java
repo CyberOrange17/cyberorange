@@ -3,19 +3,20 @@ package com.nogame.controller.login;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.nogame.client.primary.LoginUserClient;
 import com.nogame.common.RestResponse;
-import com.nogame.config.shiro.UserToken;
-import com.nogame.myenum.LoginType;
+import com.nogame.config.shiro.LoginUserToken;
 import com.nogame.myenum.ResponseCode;
 import com.nogame.myenum.ResponseTips;
 import com.nogame.primary.entity.LoginUserEntity;
-import com.nogame.primary.entity.UserEntity;
+import com.nogame.primary.vo.LoginUserVO;
 import com.nogame.utils.string.StrUtils;
 
 /**
@@ -46,8 +47,9 @@ public class LoginController {
 	 * @return
 	 */
 	@RequestMapping(value = "/login.html", method = RequestMethod.POST)
-	public RestResponse<LoginUserEntity> login(LoginUserEntity user) {
-		return RestResponse.createSuccessResponseWithMsg(user, login(user, LoginType.NORMAL));
+	@ResponseBody
+	public RestResponse<LoginUserVO> login(@RequestBody LoginUserVO loginUserVO) {
+		return RestResponse.createSuccessResponseWithMsg(loginUserVO, loginRequest(loginUserVO));
 	}
 
 	/**
@@ -56,7 +58,7 @@ public class LoginController {
 	 * @return
 	 */
 	@RequestMapping(value = "/checkRegisterAccount", method = RequestMethod.POST)
-	public RestResponse<LoginUserEntity> checkRegisterAccount(LoginUserEntity user) {
+	public RestResponse<LoginUserEntity> checkRegisterAccount(@RequestBody LoginUserEntity user) {
 		LoginUserEntity existUser = loginUserClient.getUserByAccountAndPassword(user);
 		RestResponse<LoginUserEntity> response = RestResponse.createSuccessResponse();
 		if (StrUtils.isBlank(user.getAccount()) && existUser != null) {
@@ -70,24 +72,13 @@ public class LoginController {
 	}
 
 	/**
-	 * 注销
-	 * 
-	 * @return
-	 */
-	public RestResponse<UserEntity> logout() {
-		return RestResponse.createSuccessResponse();
-	}
-
-	/**
 	 * 登录验证
-	 * 
-	 * @param user
-	 * @param type
+	 * @param loginUser
 	 * @return
 	 */
-	private String login(LoginUserEntity user, LoginType type) {
+	private String loginRequest(LoginUserVO loginUser) {
 		try {
-			UserToken token = new UserToken(user.getAccount(), user.getPassword(), type);
+			LoginUserToken token = new LoginUserToken(loginUser.getAccount(), loginUser.getPassword(), loginUser.getLoginType());
 			Subject subject = SecurityUtils.getSubject();
 			subject.login(token);
 			return null;

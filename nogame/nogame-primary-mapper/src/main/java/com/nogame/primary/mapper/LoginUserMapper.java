@@ -1,15 +1,13 @@
 package com.nogame.primary.mapper;
 
+import com.nogame.primary.mapper.base.BaseLoginUserMapper;
+
 import org.apache.ibatis.annotations.Mapper;
 
-import com.nogame.mapper.basics.BasicsMapper;
-import com.nogame.primary.entity.LoginUserEntity;
-
+/**
+ * MAPPER接口类
+ */
 @Mapper
-public interface LoginUserMapper extends BasicsMapper<LoginUserMapper>{
-
-	LoginUserEntity getUserByAccount(String account);
-
-	LoginUserEntity getUserByAccountAndPassword(String account, String password);
+public interface LoginUserMapper extends BaseLoginUserMapper {
 
 }

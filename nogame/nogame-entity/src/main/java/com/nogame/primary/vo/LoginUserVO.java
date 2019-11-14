@@ -1,12 +1,10 @@
-package com.nogame.primary.entity;
+package com.nogame.primary.vo;
 
 import java.io.Serializable;
-import java.util.Date;
 
-/**
- * 登录用户表
- */
-public class LoginUserEntity implements Serializable {
+import com.nogame.myenum.LoginType;
+
+public class LoginUserVO  implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -40,16 +38,11 @@ public class LoginUserEntity implements Serializable {
 	 */
     private String qq;
 
-	/**
-	 * 创建时间
-	 */
-    private Date createTime;
-
-	/**
-	 * 修改时间
-	 */
-    private Date updateTime;
-
+    /**
+     * 登录方式
+     */
+    private LoginType loginType;
+    
     public Long getId() {
         return id;
     }
@@ -98,19 +91,11 @@ public class LoginUserEntity implements Serializable {
         this.qq = qq;
     }
 
-    public Date getCreateTime() {
-        return createTime;
-    }
+	public LoginType getLoginType() {
+		return loginType;
+	}
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
+	public void setLoginType(LoginType loginType) {
+		this.loginType = loginType;
+	}
 }

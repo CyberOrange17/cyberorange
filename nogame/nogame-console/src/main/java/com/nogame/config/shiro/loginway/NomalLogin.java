@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.nogame.client.primary.LoginUserClient;
-import com.nogame.config.shiro.UserToken;
+import com.nogame.config.shiro.LoginUserToken;
 import com.nogame.myenum.LoginType;
 import com.nogame.primary.entity.LoginUserEntity;
 import com.nogame.utils.string.MD5;
@@ -22,7 +22,7 @@ public class NomalLogin implements LoginWay {
 
 	private LoginType loginType = LoginType.NORMAL;
 
-	private UserToken token;
+	private LoginUserToken token;
 
 	@Override
 	public LoginType loginType() {
@@ -30,7 +30,7 @@ public class NomalLogin implements LoginWay {
 	}
 
 	@Override
-	public void initByToken(UserToken token) {
+	public void initByToken(LoginUserToken token) {
 		this.token = token;
 	}
 
@@ -40,7 +40,7 @@ public class NomalLogin implements LoginWay {
 	}
 
 	@Override
-	public LoginUserEntity getUser() {
+	public LoginUserEntity getLoginUser() {
 		return loginUserClient.getUserByAccount(token.getUsername());
 	}
 

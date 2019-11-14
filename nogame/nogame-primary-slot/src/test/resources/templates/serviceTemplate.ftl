@@ -1,11 +1,11 @@
 package ${javaServicePackageName};
 
-import com.oristartech.cim.core.service.OrstService;
+import com.nogame.service.basics.BasicsService;
 import ${javaEntityPackageName}.${javaPascalName}Entity;
 
 /**
  * 服务接口类
  */
-public interface ${javaPascalName}Service extends OrstService<${javaPascalName}Entity> {
+public interface ${javaPascalName}Service extends BasicsService<${javaPascalName}Entity> {
 
 }

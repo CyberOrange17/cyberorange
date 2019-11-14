@@ -14,10 +14,11 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 @EnableEurekaServer
 public class EurekaServerStarter {
 	
-	private static Logger LOGGER = LoggerFactory.getLogger(EurekaServerStarter.class);
+	private static Logger log = LoggerFactory.getLogger(EurekaServerStarter.class);
 	
 	public static void main(String[] args) {
-		LOGGER.info("eureka starter 开始启动...");
+		log.info("Eureka注册中心EurekaServerStarter 开始启动...");
 		SpringApplication.run(EurekaServerStarter.class, args);
+		log.info("Eureka注册中心EurekaServerStarter 已启动");
 	}
 }

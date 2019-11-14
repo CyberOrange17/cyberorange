@@ -7,21 +7,22 @@
 		<artifactId>nogame</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>nogame-primary-service</artifactId>
-	<packaging>jar</packaging>
-	<name>nogame-primary-service</name>
+	<artifactId>nogame-service</artifactId>
 	<dependencies>
-		<!-- 子项目依赖 -->
 		<dependency>
 			<groupId>com.nogame</groupId>
-			<artifactId>nogame-service</artifactId>
+			<artifactId>nogame-entity</artifactId>
 			<version>${nogame.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.nogame</groupId>
-			<artifactId>nogame-primary-mapper</artifactId>
+			<artifactId>nogame-mapper</artifactId>
 			<version>${nogame.version}</version>
 		</dependency>
-		<!-- 第三方开源项目依赖 -->
+		<!-- spring boot web starter -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 	</dependencies>
 </project>

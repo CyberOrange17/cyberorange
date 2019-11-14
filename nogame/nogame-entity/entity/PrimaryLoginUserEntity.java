@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * 登录用户表
  */
-public class LoginUserEntity implements Serializable {
+public class PrimaryLoginUserEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

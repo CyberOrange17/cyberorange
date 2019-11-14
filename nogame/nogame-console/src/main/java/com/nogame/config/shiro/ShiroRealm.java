@@ -23,10 +23,10 @@ public class ShiroRealm extends AuthorizingRealm {
 	 * 认证
 	 */
 	@Override
-	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-		UserToken userToken = (UserToken) token;
+	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) {
+		LoginUserToken userToken = (LoginUserToken) token;
 		LoginWay loginWay = userToken.getLoginWay();
-		LoginUserEntity user = loginWay.getUser();
+		LoginUserEntity user = loginWay.getLoginUser();
 		if (user == null) {
 			throw new AuthenticationException(ResponseTips.LOGINERROR_USERNOTEXIST);
 		}
@@ -41,7 +41,6 @@ public class ShiroRealm extends AuthorizingRealm {
 	 */
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

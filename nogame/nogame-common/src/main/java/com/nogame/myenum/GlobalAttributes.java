@@ -4,7 +4,7 @@ public class GlobalAttributes {
 	/**
 	 * spring cloud euraka 应用名
 	 */
-	public static final String EURAKA_PRIMARY = "nogame-primary-service";
+	public static final String EURAKA_PRIMARY = "nogame-primary-slot";
 	
 	
 	/**

@@ -13,7 +13,7 @@ eureka:
 #application info
 spring:
    application:
-      name: nogame-primary-service
+      name: nogame-primary-slot
 #JDBC info
    datasource:
       driver-class-name: com.mysql.jdbc.Driver
@@ -23,7 +23,7 @@ spring:
       password: root
 #mapper scan path
 mybatis:
-   mapper-locations: classpath*:mappers/*Mapper.xml
+   mapper-locations: classpath*:mapper/*Mapper.xml
 #SCAN MAPPER ENTITY
    type-aliases-package: com.nogame.primary
 #show SQl

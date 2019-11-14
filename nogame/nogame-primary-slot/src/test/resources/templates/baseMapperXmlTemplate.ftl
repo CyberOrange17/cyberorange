@@ -51,52 +51,40 @@
   	<!-- 插入一个实体对象 -->
     <insert id="insert" parameterType="${javaEntityPackageName}.${javaPascalName}Entity">
 	    insert into
-	    <#if javaModuleName == "pos">
-		${mysqlTableAlias}_{cinema_id}_{tenant_id}
-		<#else>
-		${mysqlTableAlias}_{tenant_id}
-		</#if>
+		`${mysqlTableAlias}`
 	    (
 	    <#list columnList as column>
-	    <#if (column.javaCamelName != "id") && (column.javaCamelName != "tenantId") && (column.javaCamelName != "updateTime")>
+	    <#if (column.javaCamelName != "id") && (column.javaCamelName != "updateTime")>
         	${column.mysqlColumnName},
         </#if>
 		</#list>
-			TENANT_ID
 		) values(
 	    <#list columnList as column>
-	    <#if (column.javaCamelName != "id") && (column.javaCamelName != "tenantId") && (column.javaCamelName != "updateTime")>
+	    <#if (column.javaCamelName != "id") && (column.javaCamelName != "updateTime")>
         	${hash}{${column.javaCamelName},jdbcType=${column.mysqlDataType}},
         </#if>
 		</#list>
-        	'{tenant_id}'
 	    )
   	</insert>
     
   	<!-- 批量插入实体对象 -->
     <insert id="batchInsert" parameterType="java.util.List">
 	    insert into
-	    <#if javaModuleName == "pos">
-		`${mysqlTableAlias}_{cinema_id}_{tenant_id}`
-		<#else>
-		`${mysqlTableAlias}_{tenant_id}`
-		</#if>
+		`${mysqlTableAlias}`
 	    (
 	    <#list columnList as column>
-	    <#if (column.javaCamelName != "id") && (column.javaCamelName != "tenantId") && (column.javaCamelName != "updateTime")>
+	    <#if (column.javaCamelName != "id") && (column.javaCamelName != "updateTime")>
         	${column.mysqlColumnName},
         </#if>
 		</#list>
-			TENANT_ID
 		) values
 	    <foreach collection="list" item="item" index="index" open="" close="" separator=",">
 	    (
 	    <#list columnList as column>
-	    <#if (column.javaCamelName != "id") && (column.javaCamelName != "tenantId") && (column.javaCamelName != "updateTime")>
+	    <#if (column.javaCamelName != "id") && (column.javaCamelName != "updateTime")>
         	${hash}{item.${column.javaCamelName},jdbcType=${column.mysqlDataType}},
         </#if>
 		</#list>
-        	'{tenant_id}'
         )
 		</foreach>
   	</insert>
@@ -104,29 +92,23 @@
   	<!-- 插入一个实体对象的有效属性 -->
     <insert id="insertSelective" parameterType="${javaEntityPackageName}.${javaPascalName}Entity">
 	    insert into
-	    <#if javaModuleName == "pos">
-		${mysqlTableAlias}_{cinema_id}_{tenant_id}
-		<#else>
-		${mysqlTableAlias}_{tenant_id}
-		</#if>
+		${mysqlTableAlias}
 	    (
 	    <#list columnList as column>
-	    <#if (column.javaCamelName != "id") && (column.javaCamelName != "tenantId") && (column.javaCamelName != "updateTime")>
+	    <#if (column.javaCamelName != "id") && (column.javaCamelName != "updateTime")>
 			<if test="${column.javaCamelName} != null">
 	        	${column.mysqlColumnName},
 	      	</if>
 	    </#if>
 		</#list>
-			TENANT_ID
 	    ) values(
 	    <#list columnList as column>
-	    <#if (column.javaCamelName != "id") && (column.javaCamelName != "tenantId") && (column.javaCamelName != "updateTime")>
+	    <#if (column.javaCamelName != "id") && (column.javaCamelName != "updateTime")>
 			<if test="${column.javaCamelName} != null">
 	        	${hash}{${column.javaCamelName},jdbcType=${column.mysqlDataType}},
 	      	</if>
 	    </#if>
 		</#list>
-        	'{tenant_id}'
 	    )
   	</insert>
     
@@ -134,240 +116,88 @@
     <insert id="batchInsertSelective" parameterType="java.util.List">
 	    <foreach collection="list" item="item" index="index" open="" close="" separator=";">
 		    insert into
-		    <#if javaModuleName == "pos">
-			`${mysqlTableAlias}_{cinema_id}_{tenant_id}`
-			<#else>
-			`${mysqlTableAlias}_{tenant_id}`
-			</#if>
+			`${mysqlTableAlias}`
 		    (
 		    <#list columnList as column>
-		    <#if (column.javaCamelName != "id") && (column.javaCamelName != "tenantId") && (column.javaCamelName != "updateTime")>
+		    <#if (column.javaCamelName != "id") && (column.javaCamelName != "updateTime")>
 				<if test="item.${column.javaCamelName} != null">
 		        	${column.mysqlColumnName},
 		      	</if>
 		    </#if>
 			</#list>
-				TENANT_ID
 		    ) values (
 		    <#list columnList as column>
-		    <#if (column.javaCamelName != "id") && (column.javaCamelName != "tenantId") && (column.javaCamelName != "updateTime")>
+		    <#if (column.javaCamelName != "id") && (column.javaCamelName != "updateTime")>
 				<if test="item.${column.javaCamelName} != null">
 		        	${hash}{item.${column.javaCamelName},jdbcType=${column.mysqlDataType}},
 		      	</if>
 		    </#if>
 			</#list>
-	        	'{tenant_id}'
 	        )
 		</foreach>
   	</insert>
   	
-  	<!-- 根据ID删除记录 -->
-  	<delete id="deleteById" parameterType="java.lang.Integer">
-		delete from
-	    <#if javaModuleName == "pos">
-		${mysqlTableAlias}_{cinema_id}_{tenant_id}
-		<#else>
-		${mysqlTableAlias}_{tenant_id}
-		</#if>
-		where TENANT_ID = '{tenant_id}' and ID = ${hash}{id}
-  	</delete>
-  	
-  	<!-- 批量根据ID删除记录 -->
-  	<delete id="batchDeleteById" parameterType="java.util.List">
-		delete from
-	    <#if javaModuleName == "pos">
-		`${mysqlTableAlias}_{cinema_id}_{tenant_id}`
-		<#else>
-		`${mysqlTableAlias}_{tenant_id}`
-		</#if>
-		where TENANT_ID = '{tenant_id}' and ID in 
-		<foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
-	    	${hash}{item}
-		</foreach>
-  	</delete>
-  	
-  	<!-- 根据UID删除记录 -->
-  	<delete id="deleteByUid" parameterType="java.lang.String">
-		delete from
-	    <#if javaModuleName == "pos">
-		${mysqlTableAlias}_{cinema_id}_{tenant_id}
-		<#else>
-		${mysqlTableAlias}_{tenant_id}
-		</#if>
-		where TENANT_ID = '{tenant_id}' and UID = ${hash}{uid}
-  	</delete>
-  	
-  	<!-- 批量根据UID删除记录 -->
-  	<delete id="batchDeleteByUid" parameterType="java.util.List">
-		delete from
-	    <#if javaModuleName == "pos">
-		`${mysqlTableAlias}_{cinema_id}_{tenant_id}`
-		<#else>
-		`${mysqlTableAlias}_{tenant_id}`
-		</#if>
-		where TENANT_ID = '{tenant_id}' and UID in
-		<foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
-	    	${hash}{item}
-		</foreach>
-  	</delete>
-  	
   	<!-- 根据ID更新实体对象 -->
   	<update id="updateById" parameterType="${javaEntityPackageName}.${javaPascalName}Entity">
   		update
-	    <#if javaModuleName == "pos">
-		${mysqlTableAlias}_{cinema_id}_{tenant_id}
-		<#else>
-		${mysqlTableAlias}_{tenant_id}
-		</#if>
+		${mysqlTableAlias}
     	<set>
     	<#list columnList as column>
-    	<#if (column.javaCamelName != "id") && (column.javaCamelName != "uid") && (column.javaCamelName != "tenantId") && (column.javaCamelName != "createTime") && (column.javaCamelName != "updateTime")>
+    	<#if (column.javaCamelName != "id") && (column.javaCamelName != "createTime") && (column.javaCamelName != "updateTime")>
 			${column.mysqlColumnName}=${hash}{${column.javaCamelName},jdbcType=${column.mysqlDataType}},
 		</#if>
 		</#list>
     	</set>
-		where TENANT_ID = '{tenant_id}' and ID = ${hash}{id}
+		where ID = ${hash}{id}
   	</update>
   	
   	<!-- 批量根据ID更新实体对象 -->
   	<update id="batchUpdateById" parameterType="java.util.List">
 	    <foreach collection="list" item="item" index="index" open="" close="" separator=";">
 		    update
-		    <#if javaModuleName == "pos">
-			`${mysqlTableAlias}_{cinema_id}_{tenant_id}`
-			<#else>
-			`${mysqlTableAlias}_{tenant_id}`
-			</#if>
+			`${mysqlTableAlias}`
 	    	<set>
 	    	<#list columnList as column>
-	    	<#if (column.javaCamelName != "id") && (column.javaCamelName != "uid") && (column.javaCamelName != "tenantId") && (column.javaCamelName != "createTime") && (column.javaCamelName != "updateTime")>
+	    	<#if (column.javaCamelName != "id") && (column.javaCamelName != "createTime") && (column.javaCamelName != "updateTime")>
 				${column.mysqlColumnName}=${hash}{item.${column.javaCamelName},jdbcType=${column.mysqlDataType}},
 			</#if>
 			</#list>
 	    	</set>
-			where TENANT_ID = '{tenant_id}' and ID = ${hash}{item.id}
+			where ID = ${hash}{item.id}
 		</foreach>
   	</update>
   	
   	<!-- 根据ID更新实体对象的有效属性 -->
   	<update id="updateSelectiveById" parameterType="${javaEntityPackageName}.${javaPascalName}Entity">
   		update
-	    <#if javaModuleName == "pos">
-		${mysqlTableAlias}_{cinema_id}_{tenant_id}
-		<#else>
-		${mysqlTableAlias}_{tenant_id}
-		</#if>
+		${mysqlTableAlias}
     	<set>
     	<#list columnList as column>
-    	<#if (column.javaCamelName != "id") && (column.javaCamelName != "uid") && (column.javaCamelName != "tenantId") && (column.javaCamelName != "createTime") && (column.javaCamelName != "updateTime")>
+    	<#if (column.javaCamelName != "id") && (column.javaCamelName != "createTime") && (column.javaCamelName != "updateTime")>
 	    	<if test="${column.javaCamelName} != null">
 	        	${column.mysqlColumnName}=${hash}{${column.javaCamelName},jdbcType=${column.mysqlDataType}},
 	      	</if>
 		</#if>
 		</#list>
     	</set>
-		where TENANT_ID = '{tenant_id}' and ID = ${hash}{id}
+		where ID = ${hash}{id}
   	</update>
   	
   	<!-- 批量根据ID更新实体对象的有效属性 -->
   	<update id="batchUpdateSelectiveById" parameterType="java.util.List">
   		<foreach collection="list" item="item" index="index" open="" close="" separator=";">
 	  		update
-		    <#if javaModuleName == "pos">
-			`${mysqlTableAlias}_{cinema_id}_{tenant_id}`
-			<#else>
-			`${mysqlTableAlias}_{tenant_id}`
-			</#if>
+			`${mysqlTableAlias}`
 	    	<set>
 	    	<#list columnList as column>
-	    	<#if (column.javaCamelName != "id") && (column.javaCamelName != "uid") && (column.javaCamelName != "tenantId") && (column.javaCamelName != "createTime") && (column.javaCamelName != "updateTime")>
+	    	<#if (column.javaCamelName != "id") && (column.javaCamelName != "createTime") && (column.javaCamelName != "updateTime")>
 		    	<if test="item.${column.javaCamelName} != null">
 		        	${column.mysqlColumnName}=${hash}{item.${column.javaCamelName},jdbcType=${column.mysqlDataType}},
 		      	</if>
 			</#if>
 			</#list>
 	    	</set>
-			where TENANT_ID = '{tenant_id}' and ID = ${hash}{item.id}
-		</foreach>
-  	</update>
-  	
-  	<!-- 根据UID更新实体对象 -->
-  	<update id="updateByUid" parameterType="${javaEntityPackageName}.${javaPascalName}Entity">
-  		update
-	    <#if javaModuleName == "pos">
-		${mysqlTableAlias}_{cinema_id}_{tenant_id}
-		<#else>
-		${mysqlTableAlias}_{tenant_id}
-		</#if>
-    	<set>
-    	<#list columnList as column>
-    	<#if (column.javaCamelName != "id") && (column.javaCamelName != "uid") && (column.javaCamelName != "tenantId") && (column.javaCamelName != "createTime") && (column.javaCamelName != "updateTime")>
-			${column.mysqlColumnName}=${hash}{${column.javaCamelName},jdbcType=${column.mysqlDataType}},
-		</#if>
-		</#list>
-    	</set>
-		where TENANT_ID = '{tenant_id}' and UID = ${hash}{uid}
-  	</update>
-  	
-  	<!-- 批量根据UID更新实体对象 -->
-  	<update id="batchUpdateByUid" parameterType="java.util.List">
-  		<foreach collection="list" item="item" index="index" open="" close="" separator=";">
-	  		update
-		    <#if javaModuleName == "pos">
-			`${mysqlTableAlias}_{cinema_id}_{tenant_id}`
-			<#else>
-			`${mysqlTableAlias}_{tenant_id}`
-			</#if>
-	    	<set>
-	    	<#list columnList as column>
-	    	<#if (column.javaCamelName != "id") && (column.javaCamelName != "uid") && (column.javaCamelName != "tenantId") && (column.javaCamelName != "createTime") && (column.javaCamelName != "updateTime")>
-				${column.mysqlColumnName}=${hash}{item.${column.javaCamelName},jdbcType=${column.mysqlDataType}},
-			</#if>
-			</#list>
-	    	</set>
-			where TENANT_ID = '{tenant_id}' and UID = ${hash}{item.uid}
-		</foreach>
-  	</update>
-  	
-  	<!-- 根据UID更新实体对象的有效属性 -->
-  	<update id="updateSelectiveByUid" parameterType="${javaEntityPackageName}.${javaPascalName}Entity">
-  		update
-	    <#if javaModuleName == "pos">
-		${mysqlTableAlias}_{cinema_id}_{tenant_id}
-		<#else>
-		${mysqlTableAlias}_{tenant_id}
-		</#if>
-    	<set>
-    	<#list columnList as column>
-    	<#if (column.javaCamelName != "id") && (column.javaCamelName != "uid") && (column.javaCamelName != "tenantId") && (column.javaCamelName != "createTime") && (column.javaCamelName != "updateTime")>
-	    	<if test="${column.javaCamelName} != null">
-	        	${column.mysqlColumnName}=${hash}{${column.javaCamelName},jdbcType=${column.mysqlDataType}},
-	      	</if>
-		</#if>
-		</#list>
-    	</set>
-		where TENANT_ID = '{tenant_id}' and UID = ${hash}{uid}
-  	</update>
-  	
-  	<!-- 批量根据UID更新实体对象的有效属性 -->
-  	<update id="batchUpdateSelectiveByUid" parameterType="java.util.List">
-  		<foreach collection="list" item="item" index="index" open="" close="" separator=";">
-	  		update
-		    <#if javaModuleName == "pos">
-			`${mysqlTableAlias}_{cinema_id}_{tenant_id}`
-			<#else>
-			`${mysqlTableAlias}_{tenant_id}`
-			</#if>
-	    	<set>
-	    	<#list columnList as column>
-	    	<#if (column.javaCamelName != "id") && (column.javaCamelName != "uid") && (column.javaCamelName != "tenantId") && (column.javaCamelName != "createTime") && (column.javaCamelName != "updateTime")>
-		    	<if test="item.${column.javaCamelName} != null">
-		        	${column.mysqlColumnName}=${hash}{item.${column.javaCamelName},jdbcType=${column.mysqlDataType}},
-		      	</if>
-			</#if>
-			</#list>
-	    	</set>
-			where TENANT_ID = '{tenant_id}' and UID = ${hash}{item.uid}
+			where ID = ${hash}{item.id}
 		</foreach>
   	</update>
   	
@@ -376,25 +206,8 @@
 	    select 
 	    <include refid="BaseColumnList" />
 	    from
-	    <#if javaModuleName == "pos">
-		${mysqlTableAlias}_{cinema_id}_{tenant_id}
-		<#else>
-		${mysqlTableAlias}_{tenant_id}
-		</#if>
-	    where TENANT_ID = '{tenant_id}' and ID = ${hash}{id} limit 1
-  	</select>
-  	
-  	<!-- 根据UID查询记录 -->
-  	<select id="selectByUid" parameterType="java.lang.String" resultMap="BaseResultMap">
-	    select 
-	    <include refid="BaseColumnList" />
-	    from
-	    <#if javaModuleName == "pos">
-		${mysqlTableAlias}_{cinema_id}_{tenant_id}
-		<#else>
-		${mysqlTableAlias}_{tenant_id}
-		</#if>
-	    where TENANT_ID = '{tenant_id}' and UID = ${hash}{uid} limit 1
+		${mysqlTableAlias}
+	    where ID = ${hash}{id} limit 1
   	</select>
   	
   	<!-- 根据实体可用的字段查询列表 -->
@@ -402,13 +215,9 @@
 	    select 
 	    <include refid="BaseColumnList" />
 	    from
-	    <#if javaModuleName == "pos">
-		${mysqlTableAlias}_{cinema_id}_{tenant_id}
-		<#else>
-		${mysqlTableAlias}_{tenant_id}
-		</#if>
+		${mysqlTableAlias}
 	    where
-	    	TENANT_ID = '{tenant_id}'
+	    	1 = 1 
 	    	<#list columnList as column>
 		    <if test="${column.javaCamelName} != null">
 		    and ${column.mysqlColumnName}=${hash}{${column.javaCamelName},jdbcType=${column.mysqlDataType}} 
@@ -421,13 +230,9 @@
 	    select 
 	    <include refid="BaseColumnList" />
 	    from
-	    <#if javaModuleName == "pos">
-		${mysqlTableAlias}_{cinema_id}_{tenant_id}
-		<#else>
-		${mysqlTableAlias}_{tenant_id}
-		</#if>
+		${mysqlTableAlias}
 	    where
-	    	TENANT_ID = '{tenant_id}'
+	    	1 = 1
 	    	<#list columnList as column>
 	    	<if test="${column.javaCamelName} != null">
 	        and ${column.mysqlColumnName}=${hash}{${column.javaCamelName},jdbcType=${column.mysqlDataType}} 
@@ -444,15 +249,28 @@
 	    </if>
 	    <include refid="BaseColumnList" />
 	    from
-	    <#if javaModuleName == "pos">
-		${mysqlTableAlias}_{cinema_id}_{tenant_id}
-		<#else>
-		${mysqlTableAlias}_{tenant_id}
-		</#if>
+		${mysqlTableAlias}
 	    <include refid="BaseColumnWhere" />
 	    <if test="orderby != null and orderby != ''">
 	    	${dollar}{orderby}
 	    </if>
   	</select>
+  	
+  	<!-- 根据ID删除记录 -->
+  	<delete id="deleteById" parameterType="java.lang.Integer">
+		delete from
+		${mysqlTableAlias}
+		where ID = ${hash}{id}
+  	</delete>
+  	
+  	<!-- 批量根据ID删除记录 -->
+  	<delete id="batchDeleteById" parameterType="java.util.List">
+		delete from
+		`${mysqlTableAlias}`
+		where ID in 
+		<foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+	    	${hash}{item}
+		</foreach>
+  	</delete>
   	
 </mapper>
