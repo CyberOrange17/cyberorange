@@ -25,8 +25,8 @@ public class GenerateUtils {
 	private static final String connectionURL = "jdbc:mysql://127.0.0.1:3306/nogame?useUnicode=true&characterEncoding=utf8&useSSL=false";
 	private static final String userName = "root";
 	private static final String passwd = "root";
-	private static final String projectRootDirectory = "C:\\myfiles\\git\\nogame\\nogame\\nogame-primary\\";
-	private static final String projectMapperDirectory = "C:\\myfiles\\git\\nogame\\nogame\\nogame-mapper";
+	private static final String projectRootDirectory = "C:\\myfiles\\git\\nogame\\nogame\\nogame-primary-service\\";
+	private static final String projectMapperDirectory = "C:\\myfiles\\git\\nogame\\nogame\\nogame-primary-mapper\\";
 	public static final String projectEntityDirectory = "C:\\myfiles\\git\\nogame\\nogame\\nogame-entity\\";
 	private static final String projectBasePackageName = "com.nogame";
 	private static final String[] generateTable = new String[] {"primary_login_user"};
@@ -35,7 +35,7 @@ public class GenerateUtils {
 		configuration = new Configuration();
 		configuration.setDefaultEncoding("UTF-8");
 		try {
-			configuration.setDirectoryForTemplateLoading(new File("C:\\myfiles\\git\\nogame\\nogame\\nogame-mapper\\src\\test\\resources\\templates"));
+			configuration.setDirectoryForTemplateLoading(new File("C:\\myfiles\\git\\nogame\\nogame\\nogame-primary-slot\\src\\test\\resources\\templates"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

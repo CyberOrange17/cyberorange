@@ -1,4 +1,4 @@
-package com.nogame.mapper.primary;
+package com.nogame.primary.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 

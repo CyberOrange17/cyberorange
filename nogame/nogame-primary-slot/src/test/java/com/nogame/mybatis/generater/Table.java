@@ -9,8 +9,7 @@ public class Table {
 	public String dollar = "$";
 	public static final String JAVA_PACKAGE_SEPARATOR = ".";
 	public static final String DIRECTORY_FILE_SEPARATOR = "/";
-	private static final String[] ignoreTableName = new String[] { "_000000", "_TID000000", "_377161", "_111111",
-			"_227149", "_400933" };
+	private static final String[] ignoreTableName = new String[] {};
 
 	private String mysqlTableName;
 	private String mysqlTableAlias;
@@ -292,11 +291,7 @@ public class Table {
 	}
 
 	public String getJavaMapperXmlDirectory(String rootDirectory) {
-		String mxd = rootDirectory + "src/main/resources/mappers/";
-		if (null != this.javaModuleName && !"".equals(this.javaModuleName)) {
-			mxd += this.javaModuleName;
-			mxd += Table.DIRECTORY_FILE_SEPARATOR;
-		}
+		String mxd = rootDirectory + "src/main/resources/mapper/";
 		return mxd;
 	}
 

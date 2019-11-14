@@ -15,15 +15,20 @@
 			<artifactId>nogame-entity</artifactId>
 			<version>${nogame.version}</version>
 		</dependency>
-		<!-- 第三方 -->
 		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>${springboot.mybatis.starter.version}</version>
+			<groupId>com.nogame</groupId>
+			<artifactId>nogame-mapper</artifactId>
+			<version>${nogame.version}</version>
 		</dependency>
+		<!-- spring boot web starter -->
 		<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-freemarker</artifactId>
-        </dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!-- spring cloud eureka -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+		</dependency>
 	</dependencies>
 </project>

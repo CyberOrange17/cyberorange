@@ -31,6 +31,7 @@
 		<module>nogame-primary-service</module>
 		<module>nogame-primary-slot</module>
 		<module>nogame-console</module>
+		<module>nogame-mapper</module>
 	</modules>
 	<!-- 第三方开源项目版本管理 -->
 	<dependencyManagement>

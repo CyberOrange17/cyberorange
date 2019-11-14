@@ -3,8 +3,8 @@ package com.nogame.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nogame.mapper.primary.LoginUserMapper;
 import com.nogame.primary.entity.LoginUserEntity;
+import com.nogame.primary.mapper.LoginUserMapper;
 import com.nogame.service.LoginUserService;
 import com.nogame.service.impl.basics.BasicsServiceImpl;
 
