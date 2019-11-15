@@ -16,7 +16,7 @@ import com.nogame.service.basics.BasicsService;
 public class BasicsServiceImpl<M extends BasicsMapper<T>, T> implements BasicsService<T> {
 
 	@Autowired
-	private M basicsMapper;
+	public M basicsMapper;
 
 	@Override
 	public void insert(T t) {

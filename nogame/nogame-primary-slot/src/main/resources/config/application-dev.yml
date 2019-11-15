@@ -23,9 +23,9 @@ spring:
       password: root
 #mapper scan path
 mybatis:
-   mapper-locations: classpath*:mapper/*Mapper.xml
+   mapper-locations: classpath*:/mapping/*.xml
 #SCAN MAPPER ENTITY
-   type-aliases-package: com.nogame.primary
+   type-aliases-package: com.nogame
 #show SQl
 logging:
    level:

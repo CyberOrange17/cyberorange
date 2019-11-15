@@ -20,7 +20,7 @@ public class LoginUserSlot {
 
 	@Autowired
 	private LoginUserService loginUserService;
-
+	
 	/**
 	 * 根据账号查询用户
 	 * 

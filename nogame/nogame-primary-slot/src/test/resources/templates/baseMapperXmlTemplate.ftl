@@ -202,7 +202,7 @@
   	</update>
   	
   	<!-- 根据ID查询记录 -->
-  	<select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  	<select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
 	    select 
 	    <include refid="BaseColumnList" />
 	    from
@@ -257,7 +257,7 @@
   	</select>
   	
   	<!-- 根据ID删除记录 -->
-  	<delete id="deleteById" parameterType="java.lang.Integer">
+  	<delete id="deleteById" parameterType="java.lang.Long">
 		delete from
 		${mysqlTableAlias}
 		where ID = ${hash}{id}

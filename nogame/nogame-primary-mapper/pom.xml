@@ -8,6 +8,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>nogame-primary-mapper</artifactId>
+	<packaging>jar</packaging>
 	<name>nogame-primary-mapper</name>
 	<dependencies>
 		<dependency>
