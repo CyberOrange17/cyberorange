@@ -17,5 +17,11 @@
 			<artifactId>nogame-primary-service</artifactId>
 			<version>${nogame.version}</version>
 		</dependency>
+		<!-- 第三方依赖 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid-spring-boot-starter</artifactId>
+			<version>1.1.10</version>
+		</dependency>
 	</dependencies>
 </project>

@@ -1,4 +1,4 @@
-package com.nogame.provider.user;
+package com.nogame.slot.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

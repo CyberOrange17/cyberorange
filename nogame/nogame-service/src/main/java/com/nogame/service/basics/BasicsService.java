@@ -15,42 +15,42 @@ public interface BasicsService<T> {
 	 * @param t
 	 * @return
 	 */
-	void insert(T t);
+	public void insert(T t);
 
 	/**
 	 * 批量插入实体对象
 	 * 
 	 * @param list
 	 */
-	void batchInsert(List<T> list);
+	public void batchInsert(List<T> list);
 
 	/**
 	 * 根据ID更新实体对象
 	 * 
 	 * @param t
 	 */
-	void updateById(T t);
+	public void updateById(T t);
 
 	/**
 	 * 批量根据ID更新实体对象
 	 * 
 	 * @param list
 	 */
-	void batchUpdateById(List<T> list);
+	public void batchUpdateById(List<T> list);
 
 	/**
 	 * 根据ID更新实体对象的有效属性
 	 * 
 	 * @param t
 	 */
-	void updateSelectiveById(T t);
+	public void updateSelectiveById(T t);
 
 	/**
 	 * 批量根据ID更新实体对象的有效属性
 	 * 
 	 * @param list
 	 */
-	void batchUpdateSelectiveById(List<T> list);
+	public void batchUpdateSelectiveById(List<T> list);
 
 	/**
 	 * 根据ID查询记录
@@ -58,7 +58,7 @@ public interface BasicsService<T> {
 	 * @param id
 	 * @return
 	 */
-	T selectById(Long id);
+	public T selectById(Long id);
 
 	/**
 	 * 根据实体可用的字段查询一条数据
@@ -66,7 +66,7 @@ public interface BasicsService<T> {
 	 * @param t
 	 * @return
 	 */
-	T selectOneSelective(T t);
+	public T selectOneSelective(T t);
 
 	/**
 	 * 根据实体可用的字段查询多条记录
@@ -74,19 +74,19 @@ public interface BasicsService<T> {
 	 * @param t
 	 * @return
 	 */
-	List<T> selectListSelective(T t);
+	public List<T> selectListSelective(T t);
 
 	/**
 	 * 根据ID删除记录
 	 * 
 	 * @param id
 	 */
-	void deleteById(Long id);
+	public void deleteById(Long id);
 
 	/**
 	 * 批量根据ID删除记录
 	 * 
 	 * @param list
 	 */
-	void batchDeleteById(List<Long> list);
+	public void batchDeleteById(List<Long> list);
 }

@@ -1,11 +1,11 @@
 package com.nogame;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  *  基本服务提供方
@@ -13,7 +13,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  */
 @SpringBootApplication
 @EnableEurekaClient
-@MapperScan("com.nogame")
+@ComponentScan("com.nogame")
 public class PrimarySlotStarter {
 	
 	private static Logger log = LoggerFactory.getLogger(PrimarySlotStarter.class);

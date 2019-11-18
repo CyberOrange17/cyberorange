@@ -202,7 +202,7 @@
   	</update>
   	
   	<!-- 根据ID查询记录 -->
-  	<select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  	<select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
 	    select 
 	    <include refid="BaseColumnList" />
 	    from
@@ -242,22 +242,20 @@
   	</select>
   	
   	<!-- 根据条件查询列表 -->
-  	<select id="selectList" parameterType="com.oristartech.cim.core.mybatis.Criteria" resultMap="BaseResultMap">
-	    select
-	    <if test="distinct">
-	      distinct
-	    </if>
+  	<select id="selectList" parameterType="${javaEntityPackageName}.${javaPascalName}Entity" resultMap="BaseResultMap">
+	    select 
 	    <include refid="BaseColumnList" />
 	    from
 		${mysqlTableAlias}
-	    <include refid="BaseColumnWhere" />
-	    <if test="orderby != null and orderby != ''">
-	    	${dollar}{orderby}
-	    </if>
+	    where
+	    	1 = 1 
+	    	<#list columnList as column>
+		    and ${column.mysqlColumnName}=${hash}{${column.javaCamelName},jdbcType=${column.mysqlDataType}} 
+			</#list>
   	</select>
   	
   	<!-- 根据ID删除记录 -->
-  	<delete id="deleteById" parameterType="java.lang.Long">
+  	<delete id="deleteById" parameterType="java.lang.Integer">
 		delete from
 		${mysqlTableAlias}
 		where ID = ${hash}{id}

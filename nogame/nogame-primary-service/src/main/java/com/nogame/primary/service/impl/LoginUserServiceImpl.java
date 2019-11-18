@@ -22,7 +22,8 @@ public class LoginUserServiceImpl extends BasicsServiceImpl<LoginUserMapper, Log
 	public LoginUserEntity getLoginUserByAccount(String account) {
 		LoginUserEntity loginUserEntity = new LoginUserEntity();
 		loginUserEntity.setAccount(account);
-		return loginUserMapper.selectOneSelective(loginUserEntity);
+		LoginUserEntity selectOneSelective = loginUserMapper.selectOneSelective(loginUserEntity);
+		return selectOneSelective;
 	}
 
 }
