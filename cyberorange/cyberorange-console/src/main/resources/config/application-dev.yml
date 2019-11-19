@@ -1,0 +1,17 @@
+spring:
+   application:
+      name: cyberorange-console
+server:
+   port: 8080
+#eureka注册
+eurekaServer:
+   host: localhost
+   port: 9090
+eureka:
+   client:
+      register-with-eureka: true
+      service-url:
+         defaultZone: http://${eurekaServer.host}:${eurekaServer.port}/eureka
+#logback
+logging:
+   config: classpath:config/logback-spring.xml

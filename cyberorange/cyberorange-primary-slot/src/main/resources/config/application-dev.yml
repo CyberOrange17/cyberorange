@@ -62,7 +62,6 @@ mybatis:
    mapper-locations: classpath*:/mapper/**/*.xml
 #SCAN MAPPER ENTITY
    type-aliases-package: com.cyberorange
-#show SQl
+#logback
 logging:
-   level:
-      com.cyberorange.primary.mapper: debug
+   config: classpath:config/logback-spring.xml

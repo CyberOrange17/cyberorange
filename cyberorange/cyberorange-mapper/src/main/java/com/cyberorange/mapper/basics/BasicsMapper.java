@@ -2,14 +2,11 @@ package com.cyberorange.mapper.basics;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
-
 /**
  * 基础操作接口
  * 
  * @author 黄传举
  */
-@Mapper
 public interface BasicsMapper<T> {
 
 	/**
