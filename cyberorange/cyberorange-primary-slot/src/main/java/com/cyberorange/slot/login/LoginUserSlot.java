@@ -1,13 +1,14 @@
 package com.cyberorange.slot.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cyberorange.primary.entity.LoginUserEntity;
 import com.cyberorange.primary.service.LoginUserService;
+import com.cyberorange.primary.vo.LoginUserVO;
 
 /**
  * 基础服务-用户登录
@@ -31,15 +32,24 @@ public class LoginUserSlot {
 	public LoginUserEntity getUserByAccount(@RequestParam String account) {
 		return loginUserService.getLoginUserByAccount(account);
 	}
-
+	
 	/**
-	 * 注册验证：账号是否已注册
-	 * @param user
-	 * @return
+	 * 注册
+	 * @param loginUserVO
 	 */
-	@RequestMapping(value = "/checkRegisterAccount", method = RequestMethod.POST)
-	public LoginUserEntity checkRegisterAccount(@RequestParam String account) {
-		return loginUserService.getLoginUserByAccount(account);
+	@RequestMapping(value = "/register")
+	public void register(@RequestBody LoginUserVO loginUserVO) {
+		loginUserService.register(loginUserVO);
 	}
 	
+	/**
+	 * 根据账号查询用户
+	 * 
+	 * @param email
+	 * @return
+	 */
+	@RequestMapping(value = "/getUserByEmail")
+	public LoginUserEntity getUserByEmail(@RequestParam String email) {
+		return loginUserService.getUserByEmail(email);
+	}
 }

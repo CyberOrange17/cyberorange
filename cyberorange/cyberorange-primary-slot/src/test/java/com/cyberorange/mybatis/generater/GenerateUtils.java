@@ -47,11 +47,11 @@ public class GenerateUtils {
 		for (Table table : list) {
 			generateMapperXml(table, false);
 			generateBaseMapperXml(table, true);
-			//generateMapper(table, false);
-			//generateBaseMapper(table, true);
+			generateMapper(table, false);
+			generateBaseMapper(table, true);
 			generateEntity(table, true);
-			//generateService(table, false);
-			//generateServiceImpl(table, false);
+			generateService(table, false);
+			generateServiceImpl(table, false);
 		}
 		System.out.println("generate 共 " + list.size() + " 个");
 		System.out.println("generate done.");

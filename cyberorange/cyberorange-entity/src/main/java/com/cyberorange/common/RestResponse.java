@@ -14,12 +14,18 @@ public class RestResponse<T> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 200成功 500失败
+	 * 响应代码
 	 */
 	private int status;
 
+	/**
+	 * 响应信息
+	 */
 	private String msg;
 
+	/**
+	 * 响应数据
+	 */
 	private T data;
 
 	public static <T> RestResponse<T> createSuccessResponse() {

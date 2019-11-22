@@ -37,6 +37,7 @@
         	EMAIL,
         	QQ,
         	CREATE_TIME,
+			UPDATE_TIME
 		) values(
         	#{account,jdbcType=VARCHAR},
         	#{password,jdbcType=VARCHAR},
@@ -44,6 +45,7 @@
         	#{email,jdbcType=VARCHAR},
         	#{qq,jdbcType=VARCHAR},
         	#{createTime,jdbcType=TIMESTAMP},
+			#{updateTime,jdbcType=TIMESTAMP}
 	    )
   	</insert>
     
@@ -58,6 +60,7 @@
         	EMAIL,
         	QQ,
         	CREATE_TIME,
+			UPDATE_TIME
 		) values
 	    <foreach collection="list" item="item" index="index" open="" close="" separator=",">
 	    (
@@ -67,112 +70,24 @@
         	#{item.email,jdbcType=VARCHAR},
         	#{item.qq,jdbcType=VARCHAR},
         	#{item.createTime,jdbcType=TIMESTAMP},
+			#{item.updateTime,jdbcType=TIMESTAMP}
         )
 		</foreach>
   	</insert>
     
-  	<!-- 插入一个实体对象的有效属性 -->
-    <insert id="insertSelective" parameterType="com.cyberorange.primary.entity.LoginUserEntity">
-	    insert into
-		primary_login_user
-	    (
-			<if test="account != null">
-	        	ACCOUNT,
-	      	</if>
-			<if test="password != null">
-	        	PASSWORD,
-	      	</if>
-			<if test="phone != null">
-	        	PHONE,
-	      	</if>
-			<if test="email != null">
-	        	EMAIL,
-	      	</if>
-			<if test="qq != null">
-	        	QQ,
-	      	</if>
-			<if test="createTime != null">
-	        	CREATE_TIME,
-	      	</if>
-	    ) values(
-			<if test="account != null">
-	        	#{account,jdbcType=VARCHAR},
-	      	</if>
-			<if test="password != null">
-	        	#{password,jdbcType=VARCHAR},
-	      	</if>
-			<if test="phone != null">
-	        	#{phone,jdbcType=VARCHAR},
-	      	</if>
-			<if test="email != null">
-	        	#{email,jdbcType=VARCHAR},
-	      	</if>
-			<if test="qq != null">
-	        	#{qq,jdbcType=VARCHAR},
-	      	</if>
-			<if test="createTime != null">
-	        	#{createTime,jdbcType=TIMESTAMP},
-	      	</if>
-	    )
-  	</insert>
-    
-  	<!-- 批量插入实体对象的有效属性 -->
-    <insert id="batchInsertSelective" parameterType="java.util.List">
-	    <foreach collection="list" item="item" index="index" open="" close="" separator=";">
-		    insert into
-			`primary_login_user`
-		    (
-				<if test="item.account != null">
-		        	ACCOUNT,
-		      	</if>
-				<if test="item.password != null">
-		        	PASSWORD,
-		      	</if>
-				<if test="item.phone != null">
-		        	PHONE,
-		      	</if>
-				<if test="item.email != null">
-		        	EMAIL,
-		      	</if>
-				<if test="item.qq != null">
-		        	QQ,
-		      	</if>
-				<if test="item.createTime != null">
-		        	CREATE_TIME,
-		      	</if>
-		    ) values (
-				<if test="item.account != null">
-		        	#{item.account,jdbcType=VARCHAR},
-		      	</if>
-				<if test="item.password != null">
-		        	#{item.password,jdbcType=VARCHAR},
-		      	</if>
-				<if test="item.phone != null">
-		        	#{item.phone,jdbcType=VARCHAR},
-		      	</if>
-				<if test="item.email != null">
-		        	#{item.email,jdbcType=VARCHAR},
-		      	</if>
-				<if test="item.qq != null">
-		        	#{item.qq,jdbcType=VARCHAR},
-		      	</if>
-				<if test="item.createTime != null">
-		        	#{item.createTime,jdbcType=TIMESTAMP},
-		      	</if>
-	        )
-		</foreach>
-  	</insert>
-  	
   	<!-- 根据ID更新实体对象 -->
   	<update id="updateById" parameterType="com.cyberorange.primary.entity.LoginUserEntity">
   		update
 		primary_login_user
     	<set>
-			ACCOUNT=#{account,jdbcType=VARCHAR},
-			PASSWORD=#{password,jdbcType=VARCHAR},
-			PHONE=#{phone,jdbcType=VARCHAR},
-			EMAIL=#{email,jdbcType=VARCHAR},
-			QQ=#{qq,jdbcType=VARCHAR},
+	    	ACCOUNT=#{account,jdbcType=VARCHAR},
+	    	PASSWORD=#{password,jdbcType=VARCHAR},
+	    	PHONE=#{phone,jdbcType=VARCHAR},
+	    	EMAIL=#{email,jdbcType=VARCHAR},
+	    	QQ=#{qq,jdbcType=VARCHAR},
+	    	CREATE_TIME=#{createTime,jdbcType=TIMESTAMP},
+	    	UPDATE_TIME=#{updateTime,jdbcType=TIMESTAMP},
+			ID = #{id}
     	</set>
 		where ID = #{id}
   	</update>
@@ -183,11 +98,14 @@
 		    update
 			`primary_login_user`
 	    	<set>
-				ACCOUNT=#{item.account,jdbcType=VARCHAR},
-				PASSWORD=#{item.password,jdbcType=VARCHAR},
-				PHONE=#{item.phone,jdbcType=VARCHAR},
-				EMAIL=#{item.email,jdbcType=VARCHAR},
-				QQ=#{item.qq,jdbcType=VARCHAR},
+        		ACCOUNT=#{item.account,jdbcType=VARCHAR},
+        		PASSWORD=#{item.password,jdbcType=VARCHAR},
+        		PHONE=#{item.phone,jdbcType=VARCHAR},
+        		EMAIL=#{item.email,jdbcType=VARCHAR},
+        		QQ=#{item.qq,jdbcType=VARCHAR},
+        		CREATE_TIME=#{item.createTime,jdbcType=TIMESTAMP},
+        		UPDATE_TIME=#{item.updateTime,jdbcType=TIMESTAMP},
+				ID = #{item.id}
 	    	</set>
 			where ID = #{item.id}
 		</foreach>
@@ -198,21 +116,28 @@
   		update
 		primary_login_user
     	<set>
-	    	<if test="account != null">
-	        	ACCOUNT=#{account,jdbcType=VARCHAR},
-	      	</if>
-	    	<if test="password != null">
-	        	PASSWORD=#{password,jdbcType=VARCHAR},
-	      	</if>
-	    	<if test="phone != null">
-	        	PHONE=#{phone,jdbcType=VARCHAR},
-	      	</if>
-	    	<if test="email != null">
-	        	EMAIL=#{email,jdbcType=VARCHAR},
-	      	</if>
-	    	<if test="qq != null">
-	        	QQ=#{qq,jdbcType=VARCHAR},
-	      	</if>
+      		<if test="account != null">
+        		ACCOUNT=#{account,jdbcType=VARCHAR},
+      		</if>
+      		<if test="password != null">
+        		PASSWORD=#{password,jdbcType=VARCHAR},
+      		</if>
+      		<if test="phone != null">
+        		PHONE=#{phone,jdbcType=VARCHAR},
+      		</if>
+      		<if test="email != null">
+        		EMAIL=#{email,jdbcType=VARCHAR},
+      		</if>
+      		<if test="qq != null">
+        		QQ=#{qq,jdbcType=VARCHAR},
+      		</if>
+      		<if test="createTime != null">
+        		CREATE_TIME=#{createTime,jdbcType=TIMESTAMP},
+      		</if>
+      		<if test="updateTime != null">
+        		UPDATE_TIME=#{updateTime,jdbcType=TIMESTAMP},
+      		</if>
+      		ID = #{id}
     	</set>
 		where ID = #{id}
   	</update>
@@ -223,21 +148,28 @@
 	  		update
 			`primary_login_user`
 	    	<set>
-		    	<if test="item.account != null">
-		        	ACCOUNT=#{item.account,jdbcType=VARCHAR},
-		      	</if>
-		    	<if test="item.password != null">
-		        	PASSWORD=#{item.password,jdbcType=VARCHAR},
-		      	</if>
-		    	<if test="item.phone != null">
-		        	PHONE=#{item.phone,jdbcType=VARCHAR},
-		      	</if>
-		    	<if test="item.email != null">
-		        	EMAIL=#{item.email,jdbcType=VARCHAR},
-		      	</if>
-		    	<if test="item.qq != null">
-		        	QQ=#{item.qq,jdbcType=VARCHAR},
-		      	</if>
+        		<if test="item.account != null">
+	        		ACCOUNT=#{item.account,jdbcType=VARCHAR},
+	      		</if>
+        		<if test="item.password != null">
+	        		PASSWORD=#{item.password,jdbcType=VARCHAR},
+	      		</if>
+        		<if test="item.phone != null">
+	        		PHONE=#{item.phone,jdbcType=VARCHAR},
+	      		</if>
+        		<if test="item.email != null">
+	        		EMAIL=#{item.email,jdbcType=VARCHAR},
+	      		</if>
+        		<if test="item.qq != null">
+	        		QQ=#{item.qq,jdbcType=VARCHAR},
+	      		</if>
+        		<if test="item.createTime != null">
+	        		CREATE_TIME=#{item.createTime,jdbcType=TIMESTAMP},
+	      		</if>
+        		<if test="item.updateTime != null">
+	        		UPDATE_TIME=#{item.updateTime,jdbcType=TIMESTAMP},
+	      		</if>
+	      		 ID = #{item.id}
 	    	</set>
 			where ID = #{item.id}
 		</foreach>
@@ -319,24 +251,6 @@
 	        and UPDATE_TIME=#{updateTime,jdbcType=TIMESTAMP} 
 	      	</if>
 	    limit 1
-  	</select>
-  	
-  	<!-- 根据条件查询列表 -->
-  	<select id="selectList" parameterType="com.cyberorange.primary.entity.LoginUserEntity" resultMap="BaseResultMap">
-	    select 
-	    <include refid="BaseColumnList" />
-	    from
-		primary_login_user
-	    where
-	    	1 = 1 
-		    and ID=#{id,jdbcType=BIGINT} 
-		    and ACCOUNT=#{account,jdbcType=VARCHAR} 
-		    and PASSWORD=#{password,jdbcType=VARCHAR} 
-		    and PHONE=#{phone,jdbcType=VARCHAR} 
-		    and EMAIL=#{email,jdbcType=VARCHAR} 
-		    and QQ=#{qq,jdbcType=VARCHAR} 
-		    and CREATE_TIME=#{createTime,jdbcType=TIMESTAMP} 
-		    and UPDATE_TIME=#{updateTime,jdbcType=TIMESTAMP} 
   	</select>
   	
   	<!-- 根据ID删除记录 -->

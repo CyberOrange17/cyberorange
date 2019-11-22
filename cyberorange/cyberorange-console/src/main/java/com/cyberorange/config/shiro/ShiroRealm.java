@@ -27,11 +27,8 @@ public class ShiroRealm extends AuthorizingRealm {
 		LoginUserToken userToken = (LoginUserToken) token;
 		LoginWay loginWay = userToken.getLoginWay();
 		LoginUserEntity user = loginWay.getLoginUser();
-		if (user == null) {
-			throw new AuthenticationException(ResponseTips.LOGINERROR_USERNOTEXIST);
-		}
-		if (loginWay.requriedPassword() && !loginWay.isPasswordMatch(user.getPassword())) {
-			throw new AuthenticationException(ResponseTips.LOGINERROR_PASSWORDMISMATCH);
+		if (user == null || (loginWay.requriedPassword() && !loginWay.isPasswordMatch(user.getPassword()))) {
+			throw new AuthenticationException(ResponseTips.LOGINERROR_USER_NOTMATCH);
 		}
 		return new SimpleAuthenticationInfo(userToken.getUsername(), user.getPassword(), "ShiroReaml");
 	}

@@ -17,7 +17,6 @@ import com.cyberorange.myenum.ResponseCode;
 import com.cyberorange.myenum.ResponseTips;
 import com.cyberorange.primary.entity.LoginUserEntity;
 import com.cyberorange.primary.vo.LoginUserVO;
-import com.cyberorange.utils.string.StrUtils;
 
 /**
  * 登陆管理
@@ -43,7 +42,7 @@ public class LoginController {
 
 	/**
 	 * 登录
-	 * 
+	 * @param loginUserVO
 	 * @return
 	 */
 	@RequestMapping(value = "/login.html", method = RequestMethod.POST)
@@ -51,20 +50,47 @@ public class LoginController {
 	public RestResponse<LoginUserVO> login(@RequestBody LoginUserVO loginUserVO) {
 		return RestResponse.createSuccessResponseWithMsg(loginUserVO, loginRequest(loginUserVO));
 	}
+	
+	/**
+	 * 注册
+	 * @param loginUserVO
+	 * @return
+	 */
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	@ResponseBody
+	public RestResponse<LoginUserVO> register(@RequestBody LoginUserVO loginUserVO) {
+		loginUserClient.register(loginUserVO);
+		return RestResponse.createSuccessResponse();
+	}
 
+	
+	
 	/**
 	 * 校验账号是否已注册
 	 * @param user
 	 * @return
 	 */
 	@RequestMapping(value = "/checkRegisterAccount", method = RequestMethod.POST)
-	public RestResponse<LoginUserEntity> checkRegisterAccount(@RequestBody LoginUserEntity user) {
-		LoginUserEntity existUser = loginUserClient.getUserByAccountAndPassword(user);
+	public RestResponse<LoginUserEntity> checkRegisterAccount(@RequestBody LoginUserVO loginUserVO) {
+		LoginUserEntity existUser = loginUserClient.getUserByAccount(loginUserVO.getAccount());
 		RestResponse<LoginUserEntity> response = RestResponse.createSuccessResponse();
-		if (StrUtils.isBlank(user.getAccount()) && existUser != null) {
+		if (existUser != null) {
 			response.setStatus(ResponseCode.repeat.getCode());
 			response.setMsg(ResponseTips.REGISTERERROR_USEREXIST);
-		} else {
+		}
+		return response;
+	}
+	
+	/**
+	 * 校验邮箱是否已注册
+	 * @param user
+	 * @return
+	 */
+	@RequestMapping(value = "/checkRegisterEmail", method = RequestMethod.POST)
+	public RestResponse<LoginUserEntity> checkRegisterEmail(@RequestBody LoginUserVO loginUserVO) {
+		LoginUserEntity existUser = loginUserClient.getUserByEmail(loginUserVO.getEmail());
+		RestResponse<LoginUserEntity> response = RestResponse.createSuccessResponse();
+		if (existUser != null) {
 			response.setStatus(ResponseCode.repeat.getCode());
 			response.setMsg(ResponseTips.REGISTERERROR_EMAILEXIST);
 		}

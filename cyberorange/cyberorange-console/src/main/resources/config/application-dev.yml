@@ -1,3 +1,4 @@
+#server info
 spring:
    application:
       name: cyberorange-console
@@ -15,3 +16,10 @@ eureka:
 #logback
 logging:
    config: classpath:config/logback-spring.xml
+#ribbon
+ribbon:
+   # feign超时时间
+   ReadTimeout: 120000
+   SocketTimeout: 120000
+   # 请求连接超时时间
+   ConnectTimeout : 30000

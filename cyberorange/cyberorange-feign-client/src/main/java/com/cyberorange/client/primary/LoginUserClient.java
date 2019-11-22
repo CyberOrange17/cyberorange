@@ -3,11 +3,11 @@ package com.cyberorange.client.primary;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cyberorange.myenum.GlobalAttributes;
 import com.cyberorange.primary.entity.LoginUserEntity;
+import com.cyberorange.primary.vo.LoginUserVO;
 
 @FeignClient(value = GlobalAttributes.EURAKA_PRIMARY)
 public interface LoginUserClient {
@@ -20,13 +20,20 @@ public interface LoginUserClient {
 	 */
 	@RequestMapping(value = "/loginUser/getUserByAccount")
 	public LoginUserEntity getUserByAccount(@RequestParam String account);
-
+	
 	/**
-	 * 根据账户及密码获取登录用户信息
+	 * 注册
+	 * @param loginUserVO
+	 */
+	@RequestMapping(value = "/loginUser/register")
+	public void register(@RequestBody LoginUserVO loginUserVO);
+	
+	/**
+	 * 根据邮箱获取登录用户信息
 	 * 
-	 * @param user
+	 * @param email
 	 * @return
 	 */
-	@RequestMapping(value = "/loginUser/checkRegisterAccount", method = RequestMethod.POST)
-	public LoginUserEntity getUserByAccountAndPassword(@RequestBody LoginUserEntity user);
+	@RequestMapping(value = "/loginUser/getUserByEmail")
+	public LoginUserEntity getUserByEmail(@RequestParam String email);
 }

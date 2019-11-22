@@ -1,0 +1,51 @@
+.account-icon {
+	display: inline-block;
+	height: 35px;
+	width: 35px;
+	background-image: url(/cyberorange/resources/icon/login/account.svg);
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 30%;
+	left: 0px;
+	z-index: 2;
+	-moz-background-size:100% 100%; background-size:100% 100%;
+}
+
+.email-icon {
+	display: inline-block;
+	height: 35px;
+	width: 35px;
+	background-image: url(/cyberorange/resources/icon/login/email.svg);
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 30%;
+	left: 0px;
+	z-index: 2;
+	-moz-background-size:100% 100%; background-size:100% 100%;
+}
+
+.password-icon {
+	display: inline-block;
+	height: 35px;
+	width: 35px;
+	background-image: url(/cyberorange/resources/icon/login/password.svg);
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 30%;
+	left: 0px;
+	z-index: 2;
+	-moz-background-size:100% 100%; background-size:100% 100%;
+}
+
+.password-sure-icon {
+	display: inline-block;
+	height: 35px;
+	width: 35px;
+	background-image: url(/cyberorange/resources/icon/login/password_sure.svg);
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 30%;
+	left: 0px;
+	z-index: 2;
+	-moz-background-size:100% 100%; background-size:100% 100%;
+}

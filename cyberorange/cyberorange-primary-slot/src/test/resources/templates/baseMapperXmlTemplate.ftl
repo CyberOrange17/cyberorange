@@ -30,14 +30,22 @@
 		`${mysqlTableAlias}`
 	    (
 	    <#list columnList as column>
-	    <#if (column.javaCamelName != "id") && (column.javaCamelName != "updateTime")>
+	    <#if (column.javaCamelName != "id")>
+    	<#if (column_has_next)>
         	${column.mysqlColumnName},
+		<#else>
+			${column.mysqlColumnName}
+		</#if>    	
         </#if>
 		</#list>
 		) values(
 	    <#list columnList as column>
-	    <#if (column.javaCamelName != "id") && (column.javaCamelName != "updateTime")>
+	    <#if (column.javaCamelName != "id")>
+    	<#if (column_has_next)>
         	${hash}{${column.javaCamelName},jdbcType=${column.mysqlDataType}},
+		<#else>
+			${hash}{${column.javaCamelName},jdbcType=${column.mysqlDataType}}
+		</#if>    	
         </#if>
 		</#list>
 	    )
@@ -49,80 +57,41 @@
 		`${mysqlTableAlias}`
 	    (
 	    <#list columnList as column>
-	    <#if (column.javaCamelName != "id") && (column.javaCamelName != "updateTime")>
+	    <#if (column.javaCamelName != "id")>
+    	<#if (column_has_next)>
         	${column.mysqlColumnName},
+		<#else>
+			${column.mysqlColumnName}
+		</#if>
         </#if>
 		</#list>
 		) values
 	    <foreach collection="list" item="item" index="index" open="" close="" separator=",">
 	    (
 	    <#list columnList as column>
-	    <#if (column.javaCamelName != "id") && (column.javaCamelName != "updateTime")>
+	    <#if (column.javaCamelName != "id")>
+    	<#if (column_has_next)>
         	${hash}{item.${column.javaCamelName},jdbcType=${column.mysqlDataType}},
+		<#else>
+			${hash}{item.${column.javaCamelName},jdbcType=${column.mysqlDataType}}
+		</#if>
         </#if>
 		</#list>
         )
 		</foreach>
   	</insert>
     
-  	<!-- 插入一个实体对象的有效属性 -->
-    <insert id="insertSelective" parameterType="${javaEntityPackageName}.${javaPascalName}Entity">
-	    insert into
-		${mysqlTableAlias}
-	    (
-	    <#list columnList as column>
-	    <#if (column.javaCamelName != "id") && (column.javaCamelName != "updateTime")>
-			<if test="${column.javaCamelName} != null">
-	        	${column.mysqlColumnName},
-	      	</if>
-	    </#if>
-		</#list>
-	    ) values(
-	    <#list columnList as column>
-	    <#if (column.javaCamelName != "id") && (column.javaCamelName != "updateTime")>
-			<if test="${column.javaCamelName} != null">
-	        	${hash}{${column.javaCamelName},jdbcType=${column.mysqlDataType}},
-	      	</if>
-	    </#if>
-		</#list>
-	    )
-  	</insert>
-    
-  	<!-- 批量插入实体对象的有效属性 -->
-    <insert id="batchInsertSelective" parameterType="java.util.List">
-	    <foreach collection="list" item="item" index="index" open="" close="" separator=";">
-		    insert into
-			`${mysqlTableAlias}`
-		    (
-		    <#list columnList as column>
-		    <#if (column.javaCamelName != "id") && (column.javaCamelName != "updateTime")>
-				<if test="item.${column.javaCamelName} != null">
-		        	${column.mysqlColumnName},
-		      	</if>
-		    </#if>
-			</#list>
-		    ) values (
-		    <#list columnList as column>
-		    <#if (column.javaCamelName != "id") && (column.javaCamelName != "updateTime")>
-				<if test="item.${column.javaCamelName} != null">
-		        	${hash}{item.${column.javaCamelName},jdbcType=${column.mysqlDataType}},
-		      	</if>
-		    </#if>
-			</#list>
-	        )
-		</foreach>
-  	</insert>
-  	
   	<!-- 根据ID更新实体对象 -->
   	<update id="updateById" parameterType="${javaEntityPackageName}.${javaPascalName}Entity">
   		update
 		${mysqlTableAlias}
     	<set>
     	<#list columnList as column>
-    	<#if (column.javaCamelName != "id") && (column.javaCamelName != "createTime") && (column.javaCamelName != "updateTime")>
-			${column.mysqlColumnName}=${hash}{${column.javaCamelName},jdbcType=${column.mysqlDataType}},
+    	<#if (column.javaCamelName != "id")>
+	    	${column.mysqlColumnName}=${hash}{${column.javaCamelName},jdbcType=${column.mysqlDataType}},
 		</#if>
 		</#list>
+			ID = ${hash}{id}
     	</set>
 		where ID = ${hash}{id}
   	</update>
@@ -134,10 +103,11 @@
 			`${mysqlTableAlias}`
 	    	<set>
 	    	<#list columnList as column>
-	    	<#if (column.javaCamelName != "id") && (column.javaCamelName != "createTime") && (column.javaCamelName != "updateTime")>
-				${column.mysqlColumnName}=${hash}{item.${column.javaCamelName},jdbcType=${column.mysqlDataType}},
+	    	<#if (column.javaCamelName != "id")>
+        		${column.mysqlColumnName}=${hash}{item.${column.javaCamelName},jdbcType=${column.mysqlDataType}},
 			</#if>
 			</#list>
+				ID = ${hash}{item.id}
 	    	</set>
 			where ID = ${hash}{item.id}
 		</foreach>
@@ -149,12 +119,13 @@
 		${mysqlTableAlias}
     	<set>
     	<#list columnList as column>
-    	<#if (column.javaCamelName != "id") && (column.javaCamelName != "createTime") && (column.javaCamelName != "updateTime")>
-	    	<if test="${column.javaCamelName} != null">
-	        	${column.mysqlColumnName}=${hash}{${column.javaCamelName},jdbcType=${column.mysqlDataType}},
-	      	</if>
+    	<#if (column.javaCamelName != "id")>
+      		<if test="${column.javaCamelName} != null">
+        		${column.mysqlColumnName}=${hash}{${column.javaCamelName},jdbcType=${column.mysqlDataType}},
+      		</if>
 		</#if>
 		</#list>
+      		ID = ${hash}{id}
     	</set>
 		where ID = ${hash}{id}
   	</update>
@@ -166,12 +137,13 @@
 			`${mysqlTableAlias}`
 	    	<set>
 	    	<#list columnList as column>
-	    	<#if (column.javaCamelName != "id") && (column.javaCamelName != "createTime") && (column.javaCamelName != "updateTime")>
-		    	<if test="item.${column.javaCamelName} != null">
-		        	${column.mysqlColumnName}=${hash}{item.${column.javaCamelName},jdbcType=${column.mysqlDataType}},
-		      	</if>
+	    	<#if (column.javaCamelName != "id")>
+        		<if test="item.${column.javaCamelName} != null">
+	        		${column.mysqlColumnName}=${hash}{item.${column.javaCamelName},jdbcType=${column.mysqlDataType}},
+	      		</if>
 			</#if>
 			</#list>
+	      		 ID = ${hash}{item.id}
 	    	</set>
 			where ID = ${hash}{item.id}
 		</foreach>
@@ -215,19 +187,6 @@
 	      	</if>
 			</#list>
 	    limit 1
-  	</select>
-  	
-  	<!-- 根据条件查询列表 -->
-  	<select id="selectList" parameterType="${javaEntityPackageName}.${javaPascalName}Entity" resultMap="BaseResultMap">
-	    select 
-	    <include refid="BaseColumnList" />
-	    from
-		${mysqlTableAlias}
-	    where
-	    	1 = 1 
-	    	<#list columnList as column>
-		    and ${column.mysqlColumnName}=${hash}{${column.javaCamelName},jdbcType=${column.mysqlDataType}} 
-			</#list>
   	</select>
   	
   	<!-- 根据ID删除记录 -->
