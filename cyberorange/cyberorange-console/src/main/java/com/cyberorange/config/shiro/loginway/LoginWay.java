@@ -41,10 +41,10 @@ public interface LoginWay {
 	boolean requriedPassword();
 
 	/**
-	 * 验证密码
+	 * 获取MD5加密后密码
 	 * 
 	 * @param password
 	 * @return
 	 */
-	boolean isPasswordMatch(String password);
+	String passwordForMD5(String password);
 }

@@ -45,8 +45,7 @@ public class NomalLogin implements LoginWay {
 	}
 
 	@Override
-	public boolean isPasswordMatch(String password) {
-		String tokenPassword = MD5.md5(new String(token.getPassword()));
-		return tokenPassword.equals(password);
+	public String passwordForMD5(String password) {
+		return MD5.md5(new String(token.getPassword()));
 	}
 }

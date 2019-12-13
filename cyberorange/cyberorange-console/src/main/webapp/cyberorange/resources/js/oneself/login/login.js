@@ -18,9 +18,8 @@ $(function() {
 			contentType : "application/json;charset=utf-8",
 			data : JSON.stringify(data),
 			success : function(res) {
-				debugger
 				if(res.status == 200){
-					window.location.href = "/cyberorange/views/login/login.html";
+					window.location.href = "/cyberorange/views/index.html";
 				}
 			}
 		});

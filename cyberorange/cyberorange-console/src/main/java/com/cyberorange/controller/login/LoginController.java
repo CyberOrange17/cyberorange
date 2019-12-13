@@ -47,8 +47,8 @@ public class LoginController {
 	 */
 	@RequestMapping(value = "/login.html", method = RequestMethod.POST)
 	@ResponseBody
-	public RestResponse<LoginUserVO> login(@RequestBody LoginUserVO loginUserVO) {
-		return RestResponse.createSuccessResponseWithMsg(loginUserVO, loginRequest(loginUserVO));
+	public RestResponse<LoginUserEntity> login(@RequestBody LoginUserVO loginUserVO) {
+		return loginRequest(loginUserVO);
 	}
 	
 	/**
@@ -102,14 +102,14 @@ public class LoginController {
 	 * @param loginUser
 	 * @return
 	 */
-	private String loginRequest(LoginUserVO loginUser) {
+	private RestResponse<LoginUserEntity> loginRequest(LoginUserVO loginUser) {
 		try {
 			LoginUserToken token = new LoginUserToken(loginUser.getAccount(), loginUser.getPassword(), loginUser.getLoginType());
 			Subject subject = SecurityUtils.getSubject();
 			subject.login(token);
-			return null;
+			return RestResponse.createSuccessResponse();
 		} catch (Exception e) {
-			return e.getMessage();
+			return RestResponse.createErrorResponseWithMsg();
 		}
 	}
 }
