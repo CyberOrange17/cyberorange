@@ -19,7 +19,7 @@ public interface LoginUserClient {
 	 * @return
 	 */
 	@RequestMapping(value = "/loginUser/getUserByAccount")
-	public LoginUserEntity getUserByAccount(@RequestParam String account);
+	public LoginUserEntity getUserByAccount(@RequestParam("account") String account);
 	
 	/**
 	 * 注册
@@ -35,5 +35,5 @@ public interface LoginUserClient {
 	 * @return
 	 */
 	@RequestMapping(value = "/loginUser/getUserByEmail")
-	public LoginUserEntity getUserByEmail(@RequestParam String email);
+	public LoginUserEntity getUserByEmail(@RequestParam("email") String email);
 }

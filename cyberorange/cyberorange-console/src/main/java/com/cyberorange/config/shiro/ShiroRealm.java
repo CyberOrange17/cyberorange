@@ -25,11 +25,12 @@ public class ShiroRealm extends AuthorizingRealm {
 		LoginUserToken userToken = (LoginUserToken) token;
 		LoginWay loginWay = userToken.getLoginWay();
 		LoginUserEntity user = loginWay.getLoginUser();
-		String password = null;
+		char[] password = userToken.getPassword();
 		if (user != null && !loginWay.requriedPassword()) {
 			userToken.setPassword(user.getPassword().toCharArray());
+			password = user.getPassword().toCharArray();
 		}
-		return new SimpleAuthenticationInfo(user, password, "ShiroReaml");
+		return new SimpleAuthenticationInfo(user, password, this.getName());
 	}
 
 	/**

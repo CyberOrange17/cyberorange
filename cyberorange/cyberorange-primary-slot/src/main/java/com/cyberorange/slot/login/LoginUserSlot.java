@@ -17,7 +17,7 @@ import com.cyberorange.primary.vo.LoginUserVO;
  */
 @RestController
 @RequestMapping("/loginUser")
-public class LoginUserSlot {
+public class LoginUserSlot{
 
 	@Autowired
 	private LoginUserService loginUserService;
