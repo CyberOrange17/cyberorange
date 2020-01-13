@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cyberorange.primary.mapper.UserMapper" >
+    <select id="getUserBySession" resultType="com.cyberorange.primary.vo.UserVO">
+        SELECT
+            p_user.ID,
+            p_user.ADDRESS,
+            p_user.`LEVEL`,
+            p_user.LABEL,
+            p_l_user.ACCOUNT,
+            p_l_user.`NAME`,
+            p_l_user.EMAIL
+        FROM
+            primary_user p_user
+        LEFT JOIN primary_login_user p_l_user ON p_l_user.ID = p_user.LOGIN_ID
+        WHERE
+            p_user.ID = #{id};
+    </select>
+</mapper>

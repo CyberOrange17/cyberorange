@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cyberorange.primary.mapper.base.BaseUserMapper" >
+	
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.cyberorange.primary.entity.UserEntity">
+		<id column="ID" jdbcType="BIGINT" property="id"/>
+		<result column="LOGIN_ID" jdbcType="BIGINT" property="loginId"/>
+		<result column="ADDRESS" jdbcType="VARCHAR" property="address"/>
+		<result column="LEVEL" jdbcType="INTEGER" property="level"/>
+		<result column="LABEL" jdbcType="INTEGER" property="label"/>
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+		<result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime"/>
+	</resultMap>
+	
+	<!-- 通用查询结果列 -->
+	<sql id="BaseColumnList" >
+		ID,
+		LOGIN_ID,
+		ADDRESS,
+		LEVEL,
+		LABEL,
+		CREATE_TIME,
+		UPDATE_TIME
+    </sql>
+    
+  	<!-- 插入一个实体对象 -->
+    <insert id="insert" parameterType="com.cyberorange.primary.entity.UserEntity">
+	    insert into
+		`primary_user`
+	    (
+        	LOGIN_ID,
+        	ADDRESS,
+        	LEVEL,
+        	LABEL,
+        	CREATE_TIME,
+			UPDATE_TIME
+		) values(
+        	#{loginId,jdbcType=BIGINT},
+        	#{address,jdbcType=VARCHAR},
+        	#{level,jdbcType=INTEGER},
+        	#{label,jdbcType=INTEGER},
+        	#{createTime,jdbcType=TIMESTAMP},
+			#{updateTime,jdbcType=TIMESTAMP}
+	    )
+  	</insert>
+    
+  	<!-- 批量插入实体对象 -->
+    <insert id="batchInsert" parameterType="java.util.List">
+	    insert into
+		`primary_user`
+	    (
+        	LOGIN_ID,
+        	ADDRESS,
+        	LEVEL,
+        	LABEL,
+        	CREATE_TIME,
+			UPDATE_TIME
+		) values
+	    <foreach collection="list" item="item" index="index" open="" close="" separator=",">
+	    (
+        	#{item.loginId,jdbcType=BIGINT},
+        	#{item.address,jdbcType=VARCHAR},
+        	#{item.level,jdbcType=INTEGER},
+        	#{item.label,jdbcType=INTEGER},
+        	#{item.createTime,jdbcType=TIMESTAMP},
+			#{item.updateTime,jdbcType=TIMESTAMP}
+        )
+		</foreach>
+  	</insert>
+    
+  	<!-- 根据ID更新实体对象 -->
+  	<update id="updateById" parameterType="com.cyberorange.primary.entity.UserEntity">
+  		update
+		primary_user
+    	<set>
+	    	LOGIN_ID=#{loginId,jdbcType=BIGINT},
+	    	ADDRESS=#{address,jdbcType=VARCHAR},
+	    	LEVEL=#{level,jdbcType=INTEGER},
+	    	LABEL=#{label,jdbcType=INTEGER},
+	    	CREATE_TIME=#{createTime,jdbcType=TIMESTAMP},
+	    	UPDATE_TIME=#{updateTime,jdbcType=TIMESTAMP},
+			ID = #{id}
+    	</set>
+		where ID = #{id}
+  	</update>
+  	
+  	<!-- 批量根据ID更新实体对象 -->
+  	<update id="batchUpdateById" parameterType="java.util.List">
+	    <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+		    update
+			`primary_user`
+	    	<set>
+        		LOGIN_ID=#{item.loginId,jdbcType=BIGINT},
+        		ADDRESS=#{item.address,jdbcType=VARCHAR},
+        		LEVEL=#{item.level,jdbcType=INTEGER},
+        		LABEL=#{item.label,jdbcType=INTEGER},
+        		CREATE_TIME=#{item.createTime,jdbcType=TIMESTAMP},
+        		UPDATE_TIME=#{item.updateTime,jdbcType=TIMESTAMP},
+				ID = #{item.id}
+	    	</set>
+			where ID = #{item.id}
+		</foreach>
+  	</update>
+  	
+  	<!-- 根据ID更新实体对象的有效属性 -->
+  	<update id="updateSelectiveById" parameterType="com.cyberorange.primary.entity.UserEntity">
+  		update
+		primary_user
+    	<set>
+      		<if test="loginId != null">
+        		LOGIN_ID=#{loginId,jdbcType=BIGINT},
+      		</if>
+      		<if test="address != null">
+        		ADDRESS=#{address,jdbcType=VARCHAR},
+      		</if>
+      		<if test="level != null">
+        		LEVEL=#{level,jdbcType=INTEGER},
+      		</if>
+      		<if test="label != null">
+        		LABEL=#{label,jdbcType=INTEGER},
+      		</if>
+      		<if test="createTime != null">
+        		CREATE_TIME=#{createTime,jdbcType=TIMESTAMP},
+      		</if>
+      		<if test="updateTime != null">
+        		UPDATE_TIME=#{updateTime,jdbcType=TIMESTAMP},
+      		</if>
+      		ID = #{id}
+    	</set>
+		where ID = #{id}
+  	</update>
+  	
+  	<!-- 批量根据ID更新实体对象的有效属性 -->
+  	<update id="batchUpdateSelectiveById" parameterType="java.util.List">
+  		<foreach collection="list" item="item" index="index" open="" close="" separator=";">
+	  		update
+			`primary_user`
+	    	<set>
+        		<if test="item.loginId != null">
+	        		LOGIN_ID=#{item.loginId,jdbcType=BIGINT},
+	      		</if>
+        		<if test="item.address != null">
+	        		ADDRESS=#{item.address,jdbcType=VARCHAR},
+	      		</if>
+        		<if test="item.level != null">
+	        		LEVEL=#{item.level,jdbcType=INTEGER},
+	      		</if>
+        		<if test="item.label != null">
+	        		LABEL=#{item.label,jdbcType=INTEGER},
+	      		</if>
+        		<if test="item.createTime != null">
+	        		CREATE_TIME=#{item.createTime,jdbcType=TIMESTAMP},
+	      		</if>
+        		<if test="item.updateTime != null">
+	        		UPDATE_TIME=#{item.updateTime,jdbcType=TIMESTAMP},
+	      		</if>
+	      		 ID = #{item.id}
+	    	</set>
+			where ID = #{item.id}
+		</foreach>
+  	</update>
+  	
+  	<!-- 根据ID查询记录 -->
+  	<select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+	    select 
+	    <include refid="BaseColumnList" />
+	    from
+		primary_user
+	    where ID = #{id} limit 1
+  	</select>
+  	
+  	<!-- 根据实体可用的字段查询列表 -->
+  	<select id="selectListSelective" parameterType="com.cyberorange.primary.entity.UserEntity" resultMap="BaseResultMap">
+	    select 
+	    <include refid="BaseColumnList" />
+	    from
+		primary_user
+	    where
+	    	1 = 1 
+		    <if test="id != null">
+		    and ID=#{id,jdbcType=BIGINT} 
+		    </if>
+		    <if test="loginId != null">
+		    and LOGIN_ID=#{loginId,jdbcType=BIGINT} 
+		    </if>
+		    <if test="address != null">
+		    and ADDRESS=#{address,jdbcType=VARCHAR} 
+		    </if>
+		    <if test="level != null">
+		    and LEVEL=#{level,jdbcType=INTEGER} 
+		    </if>
+		    <if test="label != null">
+		    and LABEL=#{label,jdbcType=INTEGER} 
+		    </if>
+		    <if test="createTime != null">
+		    and CREATE_TIME=#{createTime,jdbcType=TIMESTAMP} 
+		    </if>
+		    <if test="updateTime != null">
+		    and UPDATE_TIME=#{updateTime,jdbcType=TIMESTAMP} 
+		    </if>
+  	</select>
+  	
+  	<!-- 根据实体可用的字段查询一条数据 -->
+  	<select id="selectOneSelective" parameterType="com.cyberorange.primary.entity.UserEntity" resultMap="BaseResultMap">
+	    select 
+	    <include refid="BaseColumnList" />
+	    from
+		primary_user
+	    where
+	    	1 = 1
+	    	<if test="id != null">
+	        and ID=#{id,jdbcType=BIGINT} 
+	      	</if>
+	    	<if test="loginId != null">
+	        and LOGIN_ID=#{loginId,jdbcType=BIGINT} 
+	      	</if>
+	    	<if test="address != null">
+	        and ADDRESS=#{address,jdbcType=VARCHAR} 
+	      	</if>
+	    	<if test="level != null">
+	        and LEVEL=#{level,jdbcType=INTEGER} 
+	      	</if>
+	    	<if test="label != null">
+	        and LABEL=#{label,jdbcType=INTEGER} 
+	      	</if>
+	    	<if test="createTime != null">
+	        and CREATE_TIME=#{createTime,jdbcType=TIMESTAMP} 
+	      	</if>
+	    	<if test="updateTime != null">
+	        and UPDATE_TIME=#{updateTime,jdbcType=TIMESTAMP} 
+	      	</if>
+	    limit 1
+  	</select>
+  	
+  	<!-- 根据ID删除记录 -->
+  	<delete id="deleteById" parameterType="java.lang.Integer">
+		delete from
+		primary_user
+		where ID = #{id}
+  	</delete>
+  	
+  	<!-- 批量根据ID删除记录 -->
+  	<delete id="batchDeleteById" parameterType="java.util.List">
+		delete from
+		`primary_user`
+		where ID in 
+		<foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+	    	#{item}
+		</foreach>
+  	</delete>
+  	
+</mapper>
