@@ -20,6 +20,7 @@
 		<shiro.version>1.3.2</shiro.version>
 		<springboot.druid.version>1.0.10</springboot.druid.version>
 		<springboot.mybatis.starter.version>1.3.2</springboot.mybatis.starter.version>
+		<lombok.version>1.18.2</lombok.version>
 	</properties>
 	<!-- 子项目 -->
 	<modules>
@@ -37,13 +38,23 @@
 	<!-- 第三方开源项目版本管理 -->
 	<dependencyManagement>
 		<dependencies>
+			<!--spring cloud-->
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Finchley.SR2</version>
+				<version>${spring.cloud.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	<!-- 第三方开源项目管理 -->
+	<dependencies>
+		<!-- lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+		</dependency>
+	</dependencies>
 </project>

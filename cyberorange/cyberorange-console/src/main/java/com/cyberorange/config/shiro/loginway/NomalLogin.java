@@ -3,7 +3,7 @@ package com.cyberorange.config.shiro.loginway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.cyberorange.client.primary.LoginUserClient;
+import com.cyberorange.client.primary.login.LoginUserClient;
 import com.cyberorange.config.shiro.LoginUserToken;
 import com.cyberorange.myenum.LoginType;
 import com.cyberorange.primary.entity.LoginUserEntity;

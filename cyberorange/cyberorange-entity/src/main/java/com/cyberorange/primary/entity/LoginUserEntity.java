@@ -1,11 +1,13 @@
 package com.cyberorange.primary.entity;
 
 import java.io.Serializable;
+import lombok.Data;
 import java.util.Date;
 
 /**
  * 登录用户表
  */
+@Data
 public class LoginUserEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -19,6 +21,11 @@ public class LoginUserEntity implements Serializable {
 	 * 账号
 	 */
     private String account;
+
+	/**
+	 * 昵称
+	 */
+    private String name;
 
 	/**
 	 * 密码
@@ -49,68 +56,4 @@ public class LoginUserEntity implements Serializable {
 	 * 修改时间
 	 */
     private Date updateTime;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getAccount() {
-        return account;
-    }
-
-    public void setAccount(String account) {
-        this.account = account;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getQq() {
-        return qq;
-    }
-
-    public void setQq(String qq) {
-        this.qq = qq;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
 }

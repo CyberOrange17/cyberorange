@@ -26,17 +26,17 @@ public class GenerateUtils {
 	private static final String connectionURL = "jdbc:mysql://127.0.0.1:3306/cyberorange?useUnicode=true&characterEncoding=utf8&useSSL=false";
 	private static final String userName = "root";
 	private static final String passwd = "root";
-	private static final String projectServiceDirectory = "C:\\myfiles\\git\\cyberorange\\cyberorange\\cyberorange-primary-service\\";
-	private static final String projectMapperDirectory = "C:\\myfiles\\git\\cyberorange\\cyberorange\\cyberorange-primary-mapper\\";
-	public static final String projectEntityDirectory = "C:\\myfiles\\git\\cyberorange\\cyberorange\\cyberorange-entity\\";
+	private static final String projectServiceDirectory = "C:\\myfiles\\git\\CB\\cyberorange\\cyberorange\\cyberorange-primary-service\\";
+	private static final String projectMapperDirectory = "C:\\myfiles\\git\\CB\\cyberorange\\cyberorange\\cyberorange-primary-mapper\\";
+	public static final String projectEntityDirectory = "C:\\myfiles\\git\\CB\\cyberorange\\cyberorange\\cyberorange-entity\\";
 	private static final String projectBasePackageName = "com.cyberorange";
-	private static final String[] generateTable = new String[] {"primary_login_user"};
+	private static final String[] generateTable = new String[] {"primary_user","primary_login_user"};
 	private static Configuration configuration = null;
 	static {
 		configuration = new Configuration();
 		configuration.setDefaultEncoding("UTF-8");
 		try {
-			configuration.setDirectoryForTemplateLoading(new File("C:\\myfiles\\git\\cyberorange\\cyberorange\\cyberorange-primary-slot\\src\\test\\resources\\templates"));
+			configuration.setDirectoryForTemplateLoading(new File("C:\\myfiles\\git\\CB\\cyberorange\\cyberorange\\cyberorange-primary-slot\\src\\test\\resources\\templates"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
