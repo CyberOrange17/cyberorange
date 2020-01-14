@@ -1,8 +1,8 @@
-package com.cyberorange.console.primary.vo;
+package com.cyberorange.entity.primary.vo;
 
 import java.io.Serializable;
 
-import com.cyberorange.console.myenum.LoginType;
+import com.cyberorange.entity.myenum.LoginType;
 import com.cyberorange.myenum.LoginType;
 
 public class LoginUserVO  implements Serializable {

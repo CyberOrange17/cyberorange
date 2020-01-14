@@ -1,8 +1,8 @@
-package com.cyberorange.console.common;
+package com.cyberorange.entity.common;
 
 import java.io.Serializable;
 
-import com.cyberorange.console.myenum.ResponseCode;
+import com.cyberorange.entity.myenum.ResponseCode;
 import com.cyberorange.myenum.ResponseCode;
 
 /**

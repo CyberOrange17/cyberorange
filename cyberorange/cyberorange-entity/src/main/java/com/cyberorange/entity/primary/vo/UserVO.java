@@ -1,6 +1,6 @@
-package com.cyberorange.console.primary.vo;
+package com.cyberorange.entity.primary.vo;
 
-import com.cyberorange.console.primary.entity.UserEntity;
+import com.cyberorange.entity.primary.entity.UserEntity;
 import com.cyberorange.primary.entity.UserEntity;
 import lombok.Data;
 
