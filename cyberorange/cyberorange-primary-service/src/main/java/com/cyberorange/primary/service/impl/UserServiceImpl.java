@@ -1,11 +1,10 @@
 package com.cyberorange.primary.service.impl;
 
+import com.cyberorange.entity.primary.entity.UserEntity;
+import com.cyberorange.entity.primary.vo.UserVO;
 import com.cyberorange.primary.mapper.UserMapper;
 import com.cyberorange.primary.service.UserService;
-import com.cyberorange.primary.vo.UserVO;
 import com.cyberorange.service.basics.impl.BasicsServiceImpl;
-import com.cyberorange.primary.entity.UserEntity;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

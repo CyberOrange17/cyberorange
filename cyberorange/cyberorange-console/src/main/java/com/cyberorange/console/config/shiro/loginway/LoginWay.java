@@ -1,11 +1,8 @@
 package com.cyberorange.console.config.shiro.loginway;
 
-import com.cyberorange.config.shiro.LoginUserToken;
+import com.cyberorange.commom.myenum.LoginType;
 import com.cyberorange.console.config.shiro.LoginUserToken;
-import com.cyberorange.console.myenum.LoginType;
-import com.cyberorange.console.primary.entity.LoginUserEntity;
-import com.cyberorange.myenum.LoginType;
-import com.cyberorange.primary.entity.LoginUserEntity;
+import com.cyberorange.entity.primary.entity.LoginUserEntity;
 
 /**
  * 登录方式

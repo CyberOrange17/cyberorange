@@ -1,16 +1,13 @@
 package com.cyberorange.primary.slot.login;
 
-import com.cyberorange.eureka.primary.entity.LoginUserEntity;
-import com.cyberorange.eureka.primary.vo.LoginUserVO;
+import com.cyberorange.entity.primary.entity.LoginUserEntity;
+import com.cyberorange.entity.primary.vo.LoginUserVO;
+import com.cyberorange.primary.service.LoginUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.cyberorange.primary.entity.LoginUserEntity;
-import com.cyberorange.primary.service.LoginUserService;
-import com.cyberorange.primary.vo.LoginUserVO;
 
 /**
  * 基础服务-用户登录

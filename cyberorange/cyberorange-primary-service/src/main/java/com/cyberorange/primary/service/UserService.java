@@ -1,8 +1,8 @@
 package com.cyberorange.primary.service;
 
-import com.cyberorange.primary.vo.UserVO;
+import com.cyberorange.entity.primary.entity.UserEntity;
+import com.cyberorange.entity.primary.vo.UserVO;
 import com.cyberorange.service.basics.BasicsService;
-import com.cyberorange.primary.entity.UserEntity;
 
 /**
  * 服务接口类

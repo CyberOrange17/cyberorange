@@ -1,4 +1,4 @@
-package com.cyberorange.console.allocation.redis;
+package com.cyberorange.allocation.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;

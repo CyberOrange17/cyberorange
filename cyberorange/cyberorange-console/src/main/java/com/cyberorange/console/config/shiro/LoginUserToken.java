@@ -1,14 +1,11 @@
 package com.cyberorange.console.config.shiro;
 
-import java.util.Map;
-
-import com.cyberorange.console.myenum.LoginType;
+import com.cyberorange.commom.myenum.LoginType;
+import com.cyberorange.console.config.shiro.loginway.LoginWay;
 import com.cyberorange.console.utils.SpringContextUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 
-import com.cyberorange.config.shiro.loginway.LoginWay;
-import com.cyberorange.myenum.LoginType;
-import com.cyberorange.utils.SpringContextUtils;
+import java.util.Map;
 
 /**
  * 自定义登录令牌
@@ -36,8 +33,6 @@ public class LoginUserToken extends UsernamePasswordToken {
 	/**
 	 * 根据登录类型获取登录方式
 	 * 
-	 * @param loginType
-	 * @return
 	 */
 	public LoginWay getLoginWay() {
 		Map<String, LoginWay> loginWays = SpringContextUtils.getBeansOfType(LoginWay.class);

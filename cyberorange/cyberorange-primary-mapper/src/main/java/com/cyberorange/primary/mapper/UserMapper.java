@@ -1,8 +1,7 @@
 package com.cyberorange.primary.mapper;
 
+import com.cyberorange.entity.primary.vo.UserVO;
 import com.cyberorange.primary.mapper.base.BaseUserMapper;
-
-import com.cyberorange.primary.vo.UserVO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

@@ -1,4 +1,4 @@
-package com.cyberorange.console.allocation.redis;
+package com.cyberorange.allocation.redis;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

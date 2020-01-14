@@ -1,13 +1,12 @@
-package com.cyberorange.client.primary.login;
+package com.cyberorange.feign.primary.login;
 
+import com.cyberorange.commom.myenum.GlobalAttributes;
+import com.cyberorange.entity.primary.entity.LoginUserEntity;
+import com.cyberorange.entity.primary.vo.LoginUserVO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.cyberorange.myenum.GlobalAttributes;
-import com.cyberorange.primary.entity.LoginUserEntity;
-import com.cyberorange.primary.vo.LoginUserVO;
 
 @FeignClient(value = GlobalAttributes.EURAKA_PRIMARY)
 public interface LoginUserClient {

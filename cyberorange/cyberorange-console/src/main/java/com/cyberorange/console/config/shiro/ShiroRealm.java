@@ -1,15 +1,13 @@
 package com.cyberorange.console.config.shiro;
 
-import com.cyberorange.console.primary.entity.LoginUserEntity;
+import com.cyberorange.console.config.shiro.loginway.LoginWay;
+import com.cyberorange.entity.primary.entity.LoginUserEntity;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-
-import com.cyberorange.config.shiro.loginway.LoginWay;
-import com.cyberorange.primary.entity.LoginUserEntity;
 
 /**
  * 自定义realm

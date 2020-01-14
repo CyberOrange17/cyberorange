@@ -1,17 +1,12 @@
 package com.cyberorange.console.config.shiro.loginway;
 
+import com.cyberorange.commom.myenum.LoginType;
+import com.cyberorange.commom.utils.string.MD5;
 import com.cyberorange.console.config.shiro.LoginUserToken;
-import com.cyberorange.console.myenum.LoginType;
-import com.cyberorange.console.primary.entity.LoginUserEntity;
-import com.cyberorange.console.utils.string.MD5;
+import com.cyberorange.entity.primary.entity.LoginUserEntity;
+import com.cyberorange.feign.primary.login.LoginUserClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import com.cyberorange.client.primary.login.LoginUserClient;
-import com.cyberorange.config.shiro.LoginUserToken;
-import com.cyberorange.myenum.LoginType;
-import com.cyberorange.primary.entity.LoginUserEntity;
-import com.cyberorange.utils.string.MD5;
 
 /**
  * 账号密码登录方式
@@ -40,7 +35,7 @@ public class NomalLogin implements LoginWay {
 
 	@Override
 	public boolean requriedPassword() {
-		return loginType.isRequriedPassword();
+		return loginType.isRequiredPassword();
 	}
 
 	@Override

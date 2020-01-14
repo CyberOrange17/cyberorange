@@ -1,4 +1,4 @@
-package com.cyberorange.console.allocation.redis;
+package com.cyberorange.allocation.redis;
 
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.connection.jedis.JedisConnection;

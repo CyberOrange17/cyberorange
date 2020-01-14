@@ -1,4 +1,4 @@
-package com.cyberorange.console.allocation.redis;
+package com.cyberorange.allocation.redis;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;

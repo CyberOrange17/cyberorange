@@ -1,8 +1,7 @@
-package com.cyberorange.client.primary.index;
+package com.cyberorange.feign.primary.index;
 
-import com.cyberorange.myenum.GlobalAttributes;
-import com.cyberorange.primary.entity.LoginUserEntity;
-import com.cyberorange.primary.vo.LoginUserVO;
+import com.cyberorange.commom.myenum.GlobalAttributes;
+import com.cyberorange.entity.primary.entity.LoginUserEntity;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
