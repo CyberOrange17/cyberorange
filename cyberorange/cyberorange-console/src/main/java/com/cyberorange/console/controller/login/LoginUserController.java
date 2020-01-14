@@ -1,7 +1,7 @@
 package com.cyberorange.console.controller.login;
 
 import com.cyberorange.client.primary.login.LoginUserClient;
-import com.cyberorange.common.RestResponse;
+import com.cyberorange.console.RestResponse;
 import com.cyberorange.config.shiro.LoginUserToken;
 import com.cyberorange.console.common.RestResponse;
 import com.cyberorange.console.myenum.ResponseCode;
