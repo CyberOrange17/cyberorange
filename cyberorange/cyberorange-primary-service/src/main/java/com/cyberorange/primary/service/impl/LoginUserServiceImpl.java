@@ -1,6 +1,6 @@
-package com.cyberorange.console.primary.service.impl;
+package com.cyberorange.primary.service.impl;
 
-import com.cyberorange.console.utils.string.MD5;
+import com.cyberorange.eureka.utils.string.MD5;
 import com.cyberorange.service.basics.impl.BasicsServiceImpl;
 import com.cyberorange.utils.string.MD5;
 import com.cyberorange.primary.entity.LoginUserEntity;

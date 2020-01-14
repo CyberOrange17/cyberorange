@@ -1,4 +1,4 @@
-package com.cyberorange.console.primary.service;
+package com.cyberorange.primary.service;
 
 import com.cyberorange.primary.vo.UserVO;
 import com.cyberorange.service.basics.BasicsService;

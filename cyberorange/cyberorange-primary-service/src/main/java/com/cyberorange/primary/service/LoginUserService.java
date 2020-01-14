@@ -1,8 +1,8 @@
-package com.cyberorange.console.primary.service;
+package com.cyberorange.primary.service;
 
-import com.cyberorange.console.primary.entity.LoginUserEntity;
-import com.cyberorange.console.primary.vo.LoginUserVO;
-import com.cyberorange.console.service.basics.BasicsService;
+import com.cyberorange.eureka.primary.entity.LoginUserEntity;
+import com.cyberorange.eureka.primary.vo.LoginUserVO;
+import com.cyberorange.eureka.service.basics.BasicsService;
 import com.cyberorange.service.basics.BasicsService;
 import com.cyberorange.primary.entity.LoginUserEntity;
 import com.cyberorange.primary.vo.LoginUserVO;
