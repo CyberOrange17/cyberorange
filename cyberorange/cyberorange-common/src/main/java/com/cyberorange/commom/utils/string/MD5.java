@@ -1,4 +1,4 @@
-package com.cyberorange.console.utils.string;
+package com.cyberorange.commom.utils.string;
 
 import java.io.UnsupportedEncodingException;
 

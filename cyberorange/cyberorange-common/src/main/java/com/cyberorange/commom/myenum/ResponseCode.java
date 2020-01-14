@@ -1,4 +1,4 @@
-package com.cyberorange.console.myenum;
+package com.cyberorange.commom.myenum;
 
 /**
  * 响应码

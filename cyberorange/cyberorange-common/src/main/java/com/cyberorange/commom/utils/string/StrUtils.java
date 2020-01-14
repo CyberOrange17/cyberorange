@@ -1,4 +1,4 @@
-package com.cyberorange.console.utils.string;
+package com.cyberorange.commom.utils.string;
 
 /**
  * 字符串工具

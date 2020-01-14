@@ -1,4 +1,4 @@
-package com.cyberorange.console.utils;
+package com.cyberorange.commom.utils;
 
 import java.util.Collection;
 
