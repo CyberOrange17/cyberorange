@@ -1,4 +1,4 @@
-package com.cyberorange.console.config.jdbc;
+package com.cyberorange.primary.slot.config.jdbc;
 
 import javax.sql.DataSource;
 

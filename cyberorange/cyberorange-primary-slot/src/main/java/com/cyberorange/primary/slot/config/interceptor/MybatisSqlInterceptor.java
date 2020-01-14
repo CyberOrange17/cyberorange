@@ -1,4 +1,4 @@
-package com.cyberorange.console.config.interceptor;
+package com.cyberorange.primary.slot.config.interceptor;
 
 import java.text.DateFormat;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package com.cyberorange.console.config.jdbc;
+package com.cyberorange.primary.slot.config.jdbc;
 
 import javax.sql.DataSource;
 
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
-import com.cyberorange.config.interceptor.MybatisSqlInterceptor;
+import com.cyberorange.primary.slot.config.interceptor.MybatisSqlInterceptor;
 
 @Configuration
 @MapperScan(basePackages = { "com.cyberorange.primary.mapper" })
