@@ -1,4 +1,4 @@
-package com.cyberorange.console;
+package com.cyberorange.eureka;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
