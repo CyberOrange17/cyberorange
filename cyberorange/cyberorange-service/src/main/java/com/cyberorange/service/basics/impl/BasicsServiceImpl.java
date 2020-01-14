@@ -1,4 +1,4 @@
-package com.cyberorange.console.service.basics.impl;
+package com.cyberorange.service.basics.impl;
 
 import java.util.ArrayList;
 import java.util.List;
