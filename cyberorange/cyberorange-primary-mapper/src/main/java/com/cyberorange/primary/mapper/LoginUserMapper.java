@@ -1,4 +1,4 @@
-package com.cyberorange.console.primary.mapper;
+package com.cyberorange.primary.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 

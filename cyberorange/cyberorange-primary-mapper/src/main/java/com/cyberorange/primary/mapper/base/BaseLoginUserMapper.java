@@ -1,9 +1,8 @@
-package com.cyberorange.console.primary.mapper.base;
-
-import com.cyberorange.console.mapper.basics.BasicsMapper;
-import org.apache.ibatis.annotations.Mapper;
+package com.cyberorange.primary.mapper.base;
 
 import com.cyberorange.mapper.basics.BasicsMapper;
+import org.apache.ibatis.annotations.Mapper;
+
 import com.cyberorange.primary.entity.LoginUserEntity;
 
 /**
