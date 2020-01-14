@@ -1,4 +1,4 @@
-package com.cyberorange.console.mapper.basics;
+package com.cyberorange.mapper.basics;
 
 import java.util.List;
 
