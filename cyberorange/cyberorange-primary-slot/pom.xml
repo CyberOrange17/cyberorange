@@ -17,11 +17,6 @@
 			<artifactId>cyberorange-primary-service</artifactId>
 			<version>${cyberorange.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>com.cyberorange</groupId>
-			<artifactId>cyberorange-allocation</artifactId>
-			<version>${cyberorange.version}</version>
-		</dependency>
 		<!-- 第三方依赖 -->
 		<dependency>
 			<groupId>com.alibaba</groupId>

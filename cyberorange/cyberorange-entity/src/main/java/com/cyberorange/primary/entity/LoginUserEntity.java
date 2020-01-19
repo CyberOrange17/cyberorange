@@ -1,4 +1,4 @@
-package com.cyberorange.entity.primary.entity;
+package com.cyberorange.primary.entity;
 
 import java.io.Serializable;
 import lombok.Data;

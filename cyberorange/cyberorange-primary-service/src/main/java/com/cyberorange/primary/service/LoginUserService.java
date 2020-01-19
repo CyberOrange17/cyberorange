@@ -1,7 +1,7 @@
 package com.cyberorange.primary.service;
 
-import com.cyberorange.entity.primary.entity.LoginUserEntity;
-import com.cyberorange.entity.primary.vo.LoginUserVO;
+import com.cyberorange.primary.entity.LoginUserEntity;
+import com.cyberorange.primary.vo.LoginUserVO;
 import com.cyberorange.service.basics.BasicsService;
 
 /**

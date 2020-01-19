@@ -1,8 +1,9 @@
 package com.cyberorange.primary.mapper.base;
 
-import com.cyberorange.entity.primary.entity.UserEntity;
-import com.cyberorange.mapper.basics.BasicsMapper;
 import org.apache.ibatis.annotations.Mapper;
+
+import com.cyberorange.mapper.basics.BasicsMapper;
+import com.cyberorange.primary.entity.UserEntity;
 
 /**
  * 基础CRUD接口类

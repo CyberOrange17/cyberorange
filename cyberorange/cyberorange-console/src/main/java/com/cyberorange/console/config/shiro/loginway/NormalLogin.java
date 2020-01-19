@@ -3,8 +3,8 @@ package com.cyberorange.console.config.shiro.loginway;
 import com.cyberorange.commom.myenum.LoginType;
 import com.cyberorange.commom.utils.string.MD5;
 import com.cyberorange.console.config.shiro.LoginUserToken;
-import com.cyberorange.entity.primary.entity.LoginUserEntity;
 import com.cyberorange.feign.primary.login.LoginUserClient;
+import com.cyberorange.primary.entity.LoginUserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
  * @author 黄传举
  */
 @Component
-public class NomalLogin implements LoginWay {
+public class NormalLogin implements LoginWay {
 
 	@Autowired
 	private LoginUserClient loginUserClient;
@@ -34,7 +34,7 @@ public class NomalLogin implements LoginWay {
 	}
 
 	@Override
-	public boolean requriedPassword() {
+	public boolean requiredPassword() {
 		return loginType.isRequiredPassword();
 	}
 

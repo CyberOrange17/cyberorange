@@ -1,9 +1,9 @@
-package com.cyberorange.entity.common;
+package com.cyberorange.commom.bean;
+
+import com.cyberorange.commom.myenum.ResponseCode;
 
 import java.io.Serializable;
 
-import com.cyberorange.entity.myenum.ResponseCode;
-import com.cyberorange.myenum.ResponseCode;
 
 /**
  * 响应结果封装

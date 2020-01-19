@@ -1,22 +1,25 @@
 package com.cyberorange.console.controller.login;
 
-import com.cyberorange.client.primary.login.LoginUserClient;
-import com.cyberorange.console.RestResponse;
-import com.cyberorange.config.shiro.LoginUserToken;
-import com.cyberorange.console.common.RestResponse;
-import com.cyberorange.console.myenum.ResponseCode;
-import com.cyberorange.console.myenum.ResponseTips;
-import com.cyberorange.console.primary.entity.LoginUserEntity;
-import com.cyberorange.console.primary.vo.LoginUserVO;
-import com.cyberorange.myenum.ResponseCode;
-import com.cyberorange.myenum.ResponseTips;
+import com.cyberorange.commom.bean.RestResponse;
+import com.cyberorange.commom.constants.ResponseTips;
+import com.cyberorange.commom.constants.UserAttributes;
+import com.cyberorange.commom.myenum.ResponseCode;
+import com.cyberorange.console.config.shiro.LoginUserToken;
+import com.cyberorange.feign.primary.login.LoginUserCacheClient;
+import com.cyberorange.feign.primary.login.LoginUserClient;
 import com.cyberorange.primary.entity.LoginUserEntity;
 import com.cyberorange.primary.vo.LoginUserVO;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 登陆管理
@@ -29,6 +32,9 @@ public class LoginUserController {
 
     @Autowired
     private LoginUserClient loginUserClient;
+
+    @Autowired
+    private LoginUserCacheClient loginUserCacheClient;
 
     /**
      * 跳转到登录页面
@@ -48,8 +54,13 @@ public class LoginUserController {
      */
     @RequestMapping(value = "/login.html", method = RequestMethod.POST)
     @ResponseBody
-    public RestResponse<LoginUserEntity> login(@RequestBody LoginUserVO loginUserVO) {
-        return loginRequest(loginUserVO);
+    public RestResponse<LoginUserEntity> login(@RequestBody LoginUserVO loginUserVO, HttpServletRequest request) {
+        String token = loginRequest(loginUserVO);
+        if(token != null){
+            initUserSession(request, token);
+            return RestResponse.createSuccessResponse();
+        }
+        return RestResponse.createErrorResponseWithMsg();
     }
 
 
@@ -107,14 +118,23 @@ public class LoginUserController {
      * @param loginUser
      * @return
      */
-    private RestResponse<LoginUserEntity> loginRequest(LoginUserVO loginUser) {
+    private String loginRequest(LoginUserVO loginUser) {
         try {
             LoginUserToken token = new LoginUserToken(loginUser.getAccount(), loginUser.getPassword(), loginUser.getLoginType());
             Subject subject = SecurityUtils.getSubject();
             subject.login(token);
-            return RestResponse.createSuccessResponse();
+            Subject currentUser = SecurityUtils.getSubject();
+            if(currentUser.isAuthenticated()){
+                String backToken = loginUserCacheClient.loginUserInfo(loginUser);
+                return backToken;
+            }
+            return null;
         } catch (Exception e) {
-            return RestResponse.createErrorResponseWithMsg();
+            return null;
         }
+    }
+
+    private void initUserSession(HttpServletRequest request, String token){
+        request.getSession().setAttribute(UserAttributes.LOGIN_USER_SESSION, token);
     }
 }

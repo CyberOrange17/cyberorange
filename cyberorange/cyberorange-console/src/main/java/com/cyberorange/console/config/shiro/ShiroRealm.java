@@ -1,7 +1,7 @@
 package com.cyberorange.console.config.shiro;
 
 import com.cyberorange.console.config.shiro.loginway.LoginWay;
-import com.cyberorange.entity.primary.entity.LoginUserEntity;
+import com.cyberorange.primary.entity.LoginUserEntity;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
@@ -25,7 +25,7 @@ public class ShiroRealm extends AuthorizingRealm {
 		LoginWay loginWay = userToken.getLoginWay();
 		LoginUserEntity user = loginWay.getLoginUser();
 		char[] password = userToken.getPassword();
-		if (user != null && !loginWay.requriedPassword()) {
+		if (user != null && !loginWay.requiredPassword()) {
 			userToken.setPassword(user.getPassword().toCharArray());
 			password = user.getPassword().toCharArray();
 		}

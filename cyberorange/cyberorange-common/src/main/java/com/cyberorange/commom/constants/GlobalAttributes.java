@@ -1,10 +1,10 @@
-package com.cyberorange.commom.myenum;
+package com.cyberorange.commom.constants;
 
 public class GlobalAttributes {
 	/**
 	 * spring cloud euraka 应用名
 	 */
-	public static final String EURAKA_PRIMARY = "cyberorange-primary-slot";
+	public static final String EUREKA_PRIMARY = "cyberorange-primary-slot";
 	
 	
 	/**

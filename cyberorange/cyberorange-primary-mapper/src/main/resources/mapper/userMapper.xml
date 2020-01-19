@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.cyberorange.primary.mapper.UserMapper" >
-    <select id="getUserBySession" resultType="com.cyberorange.entity.primary.vo.UserVO">
+    <select id="getUserBySession" resultType="com.cyberorange.primary.vo.UserVO">
         SELECT
             p_user.ID,
             p_user.ADDRESS,

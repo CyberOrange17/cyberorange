@@ -1,9 +1,10 @@
-package com.cyberorange.entity.primary.vo;
+package com.cyberorange.primary.vo;
+
+import com.cyberorange.commom.myenum.LoginType;
+import jdk.nashorn.internal.objects.annotations.Constructor;
+import lombok.Builder;
 
 import java.io.Serializable;
-
-import com.cyberorange.entity.myenum.LoginType;
-import com.cyberorange.myenum.LoginType;
 
 public class LoginUserVO  implements Serializable {
 
@@ -43,7 +44,7 @@ public class LoginUserVO  implements Serializable {
      * 登录方式
      */
     private LoginType loginType;
-    
+
     public Long getId() {
         return id;
     }

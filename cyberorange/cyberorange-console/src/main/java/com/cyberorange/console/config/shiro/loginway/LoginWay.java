@@ -2,7 +2,7 @@ package com.cyberorange.console.config.shiro.loginway;
 
 import com.cyberorange.commom.myenum.LoginType;
 import com.cyberorange.console.config.shiro.LoginUserToken;
-import com.cyberorange.entity.primary.entity.LoginUserEntity;
+import com.cyberorange.primary.entity.LoginUserEntity;
 
 /**
  * 登录方式
@@ -38,7 +38,7 @@ public interface LoginWay {
 	 * 
 	 * @return
 	 */
-	boolean requriedPassword();
+	boolean requiredPassword();
 
 	/**
 	 * 获取MD5加密后密码

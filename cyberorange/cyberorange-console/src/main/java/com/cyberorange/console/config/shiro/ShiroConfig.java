@@ -4,21 +4,11 @@ import org.apache.shiro.authc.credential.SimpleCredentialsMatcher;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.mgt.WebSecurityManager;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ShiroConfig {
-
-	@Value("${spring.redis.host}")
-	private String host;
-	@Value("${spring.redis.port}")
-	private int port;
-	@Value("${spring.redis.timeout}")
-	private int timeout;
-	@Value("${spring.redis.isRedisCache}")
-	private int isRedisCache;
 
 	@Bean
 	public ShiroRealm shiroRealm() {

@@ -1,14 +1,15 @@
 package com.cyberorange.feign.primary.login;
 
-import com.cyberorange.commom.myenum.GlobalAttributes;
-import com.cyberorange.entity.primary.entity.LoginUserEntity;
-import com.cyberorange.entity.primary.vo.LoginUserVO;
+import com.cyberorange.commom.constants.GlobalAttributes;
+import com.cyberorange.primary.entity.LoginUserEntity;
+import com.cyberorange.primary.vo.LoginUserVO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(value = GlobalAttributes.EURAKA_PRIMARY)
+@FeignClient(value = GlobalAttributes.EUREKA_PRIMARY)
 public interface LoginUserClient {
 
 	/**
@@ -34,5 +35,5 @@ public interface LoginUserClient {
 	 * @return
 	 */
 	@RequestMapping(value = "/loginUser/getUserByEmail")
-	public LoginUserEntity getUserByEmail(@RequestParam("email") String email);
+	LoginUserEntity getUserByEmail(@RequestParam("email") String email);
 }

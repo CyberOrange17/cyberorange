@@ -1,8 +1,8 @@
 package com.cyberorange.primary.slot.login;
 
-import com.cyberorange.entity.primary.entity.LoginUserEntity;
-import com.cyberorange.entity.primary.vo.LoginUserVO;
+import com.cyberorange.primary.entity.LoginUserEntity;
 import com.cyberorange.primary.service.LoginUserService;
+import com.cyberorange.primary.vo.LoginUserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

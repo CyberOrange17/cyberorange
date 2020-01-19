@@ -1,6 +1,6 @@
 package com.cyberorange.primary.slot.index;
 
-import com.cyberorange.entity.primary.vo.UserVO;
+import com.cyberorange.primary.vo.UserVO;
 import com.cyberorange.primary.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

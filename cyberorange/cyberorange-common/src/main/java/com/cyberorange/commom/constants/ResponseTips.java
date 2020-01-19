@@ -1,4 +1,4 @@
-package com.cyberorange.commom.myenum;
+package com.cyberorange.commom.constants;
 
 public class ResponseTips {
 	/**

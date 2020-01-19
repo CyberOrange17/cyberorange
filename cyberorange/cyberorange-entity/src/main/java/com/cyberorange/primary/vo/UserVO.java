@@ -1,6 +1,6 @@
-package com.cyberorange.entity.primary.vo;
+package com.cyberorange.primary.vo;
 
-import com.cyberorange.entity.primary.entity.UserEntity;
+import com.cyberorange.primary.entity.UserEntity;
 import lombok.Data;
 
 @Data
